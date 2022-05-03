@@ -56,7 +56,7 @@ export default {
     publicPath,
   },
   generate: {
-    dir: 'docs',
+    // dir: 'docs',
   },
   // server: {
   //   host: '0', // default: localhost

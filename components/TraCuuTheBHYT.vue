@@ -38,41 +38,48 @@
                     </div>
             </div>
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <ul v-for="bhyt in dsBhyts" :key="bhyt.maSoBhxh"  class="divide-y divide-gray-200 dark:divide-gray-700 mt-10">
-                    
-                    <li :class="[bhyt.coTheUuTienCaoHon ? 'bg-yellow-100 border-yellow-500': isConHan(bhyt.denNgayDt) ? 'bg-green-100 border-green-500' : 'bg-gray-100 border-gray-500','py-3 sm:py-4 border-t-4 rounded mb-5 shadow']">
-                        <div class="flex-col items-center space-x-4">
-                            <div class="min-w-0 mx-5 mb-5">
-                                <p class="text-sm font-medium text-gray-900 dark:text-white text-xl text-bold mb-2">
-                                    {{bhyt.hoTen}}
-                                    {{bhyt.ngaySinhDt | namSinh}}
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    Số thẻ BHYT: {{bhyt.soTheBhyt}}
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    Nơi KCB: {{bhyt.maKCB}}
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    Từ ngày: {{bhyt.tuNgayDt | ngayThang}}
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 text-xl">
-                                    Đến ngày: {{bhyt.denNgayDt | ngayThang}}
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    Ngày 5 năm liên tục: {{bhyt.ngay5Nam | ngayThangString}}
-                                </p>
+                <div v-if="dsBhyts.length">
+                    <ul v-for="bhyt in dsBhyts" :key="bhyt.maSoBhxh"  class="divide-y divide-gray-200 dark:divide-gray-700 mt-10">
+                        <li :class="[bhyt.coTheUuTienCaoHon ? 'bg-yellow-100 border-yellow-500': isConHan(bhyt.denNgayDt) ? 'bg-green-100 border-green-500' : 'bg-gray-100 border-gray-500','py-3 sm:py-4 border-t-4 rounded mb-5 shadow']">
+                            <div class="flex-col items-center space-x-4">
+                                <div class="min-w-0 mx-5 mb-5">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white text-xl text-bold mb-2">
+                                        {{bhyt.hoTen}}
+                                        {{bhyt.ngaySinhDt | namSinh}}
+                                    </p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        Số thẻ BHYT: {{bhyt.soTheBhyt}}
+                                    </p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        Nơi KCB: {{bhyt.maKCB}}
+                                    </p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        Từ ngày: {{bhyt.tuNgayDt | ngayThang}}
+                                    </p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 text-xl">
+                                        Đến ngày: {{bhyt.denNgayDt | ngayThang}}
+                                    </p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        Ngày 5 năm liên tục: {{bhyt.ngay5Nam | ngayThangString}}
+                                    </p>
+                                </div>
+                                <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
+                                    <div>{{ bhyt.denNgayDt | soNgay}}</div>
+                                    <a v-if="!isConHan(bhyt.denNgayDt)" href="tel:0978333963" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
+                                </div>
                             </div>
-                            <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
-                                <div>{{ bhyt.denNgayDt | soNgay}}</div>
-                                <a v-if="!isConHan(bhyt.denNgayDt)" href="tel:0978333963" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <p class="text-center text-gray-500 text-xs">
-                    &copy;2022 bởi <a href="https://lovanlong.ga">Lỗ Văn Long</a>.
-                </p>
+                        </li>
+                    </ul>
+                    <p class="text-center text-gray-500 text-xs mt-10">
+                        &copy;2022 bởi <a href="https://lovanlong.ga">Lỗ Văn Long</a>.
+                    </p>
+                </div>
+                <div v-else>
+                    <p class="text-center text-gray-500 text-xs">
+                        Không có kết quả phù hợp!
+                    </p>
+                </div>
+                
                 </div>
            
           </div>
@@ -109,14 +116,15 @@ export default {
             return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
         }
     },
-    mounted(){
+    async mounted(){
+        await this.getTaiTuc();
         if (this.$route.query.q) {
             const q = this.$route.query.q;
             this.searchText = q;
-            this.timKiem(q);
+            await this.timKiem(q);
         }
         else{
-            this.getTaiTuc();
+            await this.getTaiTuc();
         }
     },
     filters: {

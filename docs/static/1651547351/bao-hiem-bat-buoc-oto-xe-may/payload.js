@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/bao-hiem-bat-buoc-oto-xe-may", {data:[{}],fetch:{},mutations:void 0});

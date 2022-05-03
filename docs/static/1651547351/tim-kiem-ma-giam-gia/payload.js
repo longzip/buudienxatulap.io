@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/tim-kiem-ma-giam-gia", {data:[{}],fetch:{},mutations:void 0});

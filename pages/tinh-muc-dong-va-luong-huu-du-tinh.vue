@@ -223,7 +223,7 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
               </p>
               <p class="mb-2">
                 <select v-model="mucThuNhap">
-                  <option disabled value="">Lựa chọn mức thu nhập</option>
+                  <option disabled value="">Lựa chọn mức thu nhập 👇</option>
                   <option v-for="option in options" :value="option" :key="option">
                     {{ (option*0.22-33000).toLocaleString() }}/{{ option.toLocaleString() }} VNĐ
                   </option>
@@ -231,10 +231,10 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
               </p>
               <p><span>Tổng số tiền đóng BHXH 20 năm:</span> {{tongDong20.toLocaleString()}} VNĐ</p>
               <p><strong>Lương hưu dự kiến:</strong> <strong class="text-2xl">{{luongHuu20Nam[0].luong.toLocaleString()}} VNĐ/tháng</strong></p>
-              <p><span>Số tiền gốc:</span> {{tongSoTienGoc.toLocaleString()}} VNĐ</p>
+              <!-- <p><span>Số tiền gốc:</span> {{tongSoTienGoc.toLocaleString()}} VNĐ</p>
               <p><span>Tổng số tiền cuối kỳ (lãi suất {{Math.round(this.laiSuatNganHang*100)}}%):</span> {{tongSoTienCuoiKy.toLocaleString()}} VNĐ</p>
               <p><span>Số tiền lãi:</span> {{(tongSoTienCuoiKy-tongSoTienGoc).toLocaleString()}} VNĐ</p>
-              <p><span>Lãi hàng tháng năm sau 20 năm:</span> {{Math.round(tongSoTienCuoiKy*0.03/12).toLocaleString()}} VNĐ</p>
+              <p><span>Lãi hàng tháng năm sau 20 năm:</span> {{Math.round(tongSoTienCuoiKy*0.03/12).toLocaleString()}} VNĐ</p> -->
             </div>
           </div>
           <div class="flex flex-wrap">
@@ -274,11 +274,9 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
                                 {{item.tien.toLocaleString()}} VNĐ
                             </span>
                         </div>
-                        <div class="text-gray-500 dark:text-gray-200 text-sm">
-                            / tháng
-                        </div>
+                        
                         <div class="px-4 mt-8 mb-2">
-                            <a href="/tinh-muc-dong-va-luong-huu-du-tinh/#mc-embedded-subscribe-form" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            <a href="tel:0978333963" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                 Bắt đầu
                             </a>
                         </div>

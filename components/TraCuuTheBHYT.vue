@@ -116,16 +116,15 @@ export default {
             return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
         }
     },
-    async mounted(){
-        await this.getTaiTuc();
+    created(){
+        
         if (this.$route.query.q) {
             const q = this.$route.query.q;
             this.searchText = q;
-            await this.timKiem(q);
+            this.timKiem(q);
         }
-        else{
-            await this.getTaiTuc();
-        }
+        else
+        this.getTaiTuc();
     },
     filters: {
         ngayThang: function (value) {

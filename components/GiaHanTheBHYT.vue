@@ -24,7 +24,7 @@
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
 
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Họ tên:
+                    Mã số Thẻ BHYT:
                 </label>
                 <input v-model="searchText" @keydown.enter="timKiem()" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
                 <p class="text-red-500 text-xs italic mb-5">Có thể tìm theo số điện thoại, mã số thẻ BHYT hoặc tên.</p>
@@ -37,39 +37,56 @@
                     </a>
                     </div>
             </div>
-            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+            <div class="w-full md:w-8/12 ml-auto mr-auto px-4">
                 <div v-if="dsBhyts.length">
-                    <ul v-for="bhyt in dsBhyts" :key="bhyt.maSoBhxh"  class="divide-y divide-gray-200 dark:divide-gray-700 mt-10">
-                        <li :class="[bhyt.coTheUuTienCaoHon ? 'bg-yellow-100 border-yellow-500': isConHan(bhyt.denNgayDt) ? 'bg-green-100 border-green-500' : 'bg-gray-100 border-gray-500','py-3 sm:py-4 border-t-4 rounded mb-5 shadow']">
-                            <div class="flex-col items-center space-x-4">
-                                <div class="min-w-0 mx-5 mb-5">
-                                    <p class="text-sm font-medium text-gray-900 dark:text-white text-xl text-bold mb-2">
-                                        {{bhyt.hoTen}}
-                                        {{bhyt.ngaySinhDt | namSinh}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Số thẻ BHYT: {{bhyt.soTheBhyt}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Nơi KCB: {{bhyt.maKCB}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Từ ngày: {{bhyt.tuNgayDt | ngayThang}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400 text-xl">
-                                        Đến ngày: {{bhyt.denNgayDt | ngayThang}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Ngày 5 năm liên tục: {{bhyt.ngay5Nam | ngayThangString}}
-                                    </p>
-                                </div>
-                                <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
-                                    <div>{{ bhyt.denNgayDt | soNgay}}</div>
-                                    <a v-if="!isConHan(bhyt.denNgayDt)" href="tel:0978333963" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
-                                </div>
+                    <div class="flex flex-col">
+                        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="overflow-hidden">
+                                <table class="min-w-full">
+                                <thead class="border-b">
+                                    <tr>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            STT
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Mã thẻ BHYT
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Họ và tên
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Ngày sinh
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Ngày hết hạn
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(bhyt, stt) in dsBhyts" :key="bhyt.maSoBhxh" class="border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            {{ stt+1 }}
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            {{ bhyt.soTheBhyt }}
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            {{ bhyt.hoTen }}
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            {{ bhyt.ngaySinhDt | ngayThang }}
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            {{ bhyt.denNgayDt | ngayThang }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
                             </div>
-                        </li>
-                    </ul>
+                            </div>
+                        </div>
+                        </div>
                     <p class="text-center text-gray-500 text-xs mt-10">
                         &copy;2022 bởi <a href="https://lovanlong.ga">Lỗ Văn Long</a>.
                     </p>
@@ -100,9 +117,19 @@ export default {
             const name = this.searchText.split(" ").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" ");
             const regex = /[0-9]/g;
             const maSo = this.searchText.match(regex);
-            this.dsBhyts = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
+            if(!maSo) return;
+            const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
                 res.json()
             );
+
+            for (let index = 0; index < theBHYTs.length; index++) {
+                const bhyt = theBHYTs[index];
+                let found = this.dsBhyts.find(
+                    (x) => x.maSoBhxh === bhyt.maSoBhxh
+                );
+                if (found) Object.assign(found, bhyt);
+                else this.dsBhyts.push(bhyt);
+            }
         },
         async getTaiTuc(){
             this.dsBhyts = await fetch("https://cmsbudientulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
@@ -123,8 +150,6 @@ export default {
             this.searchText = q;
             this.timKiem(q);
         }
-        // else
-        // this.getTaiTuc();
     },
     filters: {
         ngayThang: function (value) {

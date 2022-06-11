@@ -41,7 +41,7 @@
                 <div v-if="dsBhyts.length">
                     <div class="flex flex-col">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="py-2 inline-block min-w-full sm:px-4 lg:px-4">
                             <div class="overflow-hidden">
                                 <table class="min-w-full">
                                 <thead class="border-b">
@@ -61,6 +61,10 @@
                                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Ngày hết hạn
                                         </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Mức đóng
+                                        </th>
+                                        <th>#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,14 +82,34 @@
                                             {{ bhyt.ngaySinhDt | ngayThang }}
                                         </td>
                                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            {{ bhyt.denNgayDt | ngayThang }}
+                                            {{ bhyt.denNgayDt | soNgay }}
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            {{ bhyt.tongTien | soTien }} {{ bhyt | daThu}}
+                                        </td>
+                                        <td>
+                                            <button @click="remove(bhyt.maSoBhxh)" class="text-pink-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                                                Hủy
+                                            </button>
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
+                                Tổng cộng: {{ tongCong | soTien }}
+                                <p v-if="showTaiKhoan">Thực hiện chuyển số tiền cần đóng cho nhân viên bưu điện xã Tự Lập theo những thông tin dưới đây:<br>
+                                    Tài khoản: HO THI THAM<br>
+                                    Số tài khoản: 0711000234239<br>
+                                    Ngân hàng thụ hưởng: Vietcombank<br>
+                                    (Hoặc nộp tiền mặt trực tiếp tại Bưu điện xã Tự Lập cạnh trạm y tế xã).
+                                </p>
                             </div>
                             </div>
                         </div>
+                    </div>
+                        <div class="float-right">
+                            <button v-if="tongCong" @click="showTaiKhoan = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                Đồng ý
+                            </button>
                         </div>
                     <p class="text-center text-gray-500 text-xs mt-10">
                         &copy;2022 bởi <a href="https://lovanlong.ga">Lỗ Văn Long</a>.
@@ -97,11 +121,11 @@
                     </p>
                 </div>
                 
-                </div>
+            </div>
            
-          </div>
         </div>
-      </section>
+    </div>
+    </section>
 </template>
 <script>
 export default {
@@ -109,6 +133,16 @@ export default {
        return {
            searchText: "",
             dsBhyts: [],
+            mucDong: {
+                0: 804600,
+                1: 804600,
+                2: 563220,
+                3: 482760,
+                4: 402300 ,
+                5: 321840,
+            },
+            showTaiKhoan: false
+                
        } 
     },
     methods:{
@@ -121,9 +155,21 @@ export default {
             const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
                 res.json()
             );
-
+            await this.capNhatDanhSach(theBHYTs);
+            this.remove("");
+            this.searchText = "";
+        },
+        async capNhatDanhSach(theBHYTs){
             for (let index = 0; index < theBHYTs.length; index++) {
                 const bhyt = theBHYTs[index];
+                if(new Date(bhyt.tuNgayDt).toISOString().slice(0,4) !== '2022' || bhyt.soTheBhyt.slice(0,2) !== 'GD' )
+                    bhyt.tongTien = 0
+                const diffTime = (new Date(bhyt.denNgayDt) - new Date());
+                if(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) < 31){
+                    const soNguoiThamGia = this.dsBhyts.filter(item=> item.tongTien).length;
+                    const thu = soNguoiThamGia < 5 ? soNguoiThamGia + 1 : 5
+                    bhyt.tongTien = this.mucDong[thu]
+                }
                 let found = this.dsBhyts.find(
                     (x) => x.maSoBhxh === bhyt.maSoBhxh
                 );
@@ -141,7 +187,17 @@ export default {
             const diffTime = (new Date(value) - new Date());
             console.log(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30);
             return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
-        }
+        },
+        async remove(maSoBhxh){
+            const dsBhyts = this.dsBhyts.filter(i => i.maSoBhxh !== maSoBhxh)
+            for (let index = 0; index < dsBhyts.length; index++) {
+                const bhyt = dsBhyts[index];
+                if(bhyt.soTheBhyt.slice(0,2) !== 'GD' || new Date(bhyt.tuNgayDt).toISOString().slice(0,4) !== '2022' )
+                    bhyt.tongTien = 0
+            }
+            this.dsBhyts = []
+            await this.capNhatDanhSach(dsBhyts);
+        },
     },
     created(){
         
@@ -171,6 +227,19 @@ export default {
             if (!value) return ''
             const diffTime = (new Date(value) - new Date());
             return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
+        },
+        soTien(value){
+            if (!value) return ''
+            return parseInt(value).toLocaleString();
+        },
+        daThu(value){
+            if(new Date(value.tuNgayDt).toISOString().slice(0,4) === '2022' && value.soTheBhyt.slice(0,2) === 'GD') return "Đã thu"
+            return ""
+        }
+    },
+    computed:{
+        tongCong() {
+            return this.dsBhyts.filter(t=>t.tongTien && (t.soTheBhyt.slice(0,2) !== 'GD' || new Date(t.tuNgayDt).toISOString().slice(0,4) !== '2022')).map(t => t.tongTien).reduce((previousValue, currentValue) => previousValue + parseInt(currentValue), 0);
         }
     }
 }

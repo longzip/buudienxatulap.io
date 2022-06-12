@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
                                     <div>{{ bhyt.denNgayDt | soNgay}}</div>
-                                    <a v-if="!isConHan(bhyt.denNgayDt)" href="tel:0978333963" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
+                                    <a target="_blank" v-if="!isConHan(bhyt.denNgayDt)" :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
                                 </div>
                             </div>
                         </li>
@@ -112,7 +112,6 @@ export default {
         isConHan(value){
             if(!value) return false;
             const diffTime = (new Date(value) - new Date());
-            console.log(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30);
             return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
         }
     },
@@ -123,8 +122,8 @@ export default {
             this.searchText = q;
             this.timKiem(q);
         }
-        // else
-        // this.getTaiTuc();
+        else
+        this.getTaiTuc();
     },
     filters: {
         ngayThang: function (value) {
@@ -139,8 +138,6 @@ export default {
             if (!value) return ''
             if(isNaN(value)) return ''
             return new Date([value.substr(0,4),value.substr(4,2),value.substr(6,2)].join("-")).toLocaleDateString();;
-            // value = value.toString()
-            // return value.charAt(0).toUpperCase() + value.slice(1)
         },
         soNgay(value){
             if (!value) return ''

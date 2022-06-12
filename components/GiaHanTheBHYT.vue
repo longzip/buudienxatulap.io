@@ -26,10 +26,10 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Mã số Thẻ BHYT:
                 </label>
-                <input v-model="searchText" @keydown.enter="timKiem()" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
+                <input v-model="searchText" @keydown.enter="timKiem(searchText)" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
                 <p class="text-red-500 text-xs italic mb-5">Có thể tìm theo số điện thoại, mã số thẻ BHYT hoặc tên.</p>
                 <div class="flex items-center justify-between ">
-                    <button @click="timKiem()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <button @click="timKiem(searchText)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tra cứu
                     </button>
                     <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="tel:0978333963">
@@ -43,6 +43,7 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-2 inline-block min-w-full sm:px-4 lg:px-4">
                             <div class="overflow-hidden">
+                                <h2>Thành viên hộ gia đình:</h2>
                                 <table class="min-w-full">
                                 <thead class="border-b">
                                     <tr>
@@ -82,7 +83,7 @@
                                             {{ bhyt.ngaySinhDt | ngayThang }}
                                         </td>
                                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            {{ bhyt.denNgayDt | soNgay }}
+                                            {{ bhyt | soNgay }}
                                         </td>
                                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                             {{ bhyt.tongTien | soTien }} {{ bhyt | daThu}}
@@ -107,7 +108,7 @@
                         </div>
                     </div>
                         <div class="float-right">
-                            <button v-if="tongCong" @click="showTaiKhoan = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            <button v-if="tongCong" @click="taoDonHang()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                                 Đồng ý
                             </button>
                         </div>
@@ -146,24 +147,34 @@ export default {
        } 
     },
     methods:{
-        async timKiem() {
-            if(!this.searchText) return;
-            const name = this.searchText.split(" ").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" ");
+        async timKiem(searchText) {
+            if(!searchText) return;
+            const name = searchText.split(" ").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" ");
             const regex = /[0-9]/g;
-            const maSo = this.searchText.match(regex);
+            const maSo = name.match(regex);
             if(!maSo) return;
             const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
                 res.json()
             );
             await this.capNhatDanhSach(theBHYTs);
-            this.remove("");
-            this.searchText = "";
+        },
+        async getAllByMaHoGd(maHoGd) {
+            if(!maHoGd) return;
+            const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&maHoGd=${maHoGd}`).then(res =>
+                res.json()
+            );
+            await this.capNhatDanhSach(theBHYTs.filter(item=>item.tuNgayDt));
+        },
+        async getAllByMaSoBhxhs(maSoBhxhs) {
+            if(!maSoBhxhs) return;
+            const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&maSoBhxhs=${maSoBhxhs}`).then(res =>
+                res.json()
+            );
+            await this.capNhatDanhSach(theBHYTs.filter(item=>item.tuNgayDt));
         },
         async capNhatDanhSach(theBHYTs){
             for (let index = 0; index < theBHYTs.length; index++) {
                 const bhyt = theBHYTs[index];
-                if(new Date(bhyt.tuNgayDt).toISOString().slice(0,4) !== '2022' || bhyt.soTheBhyt.slice(0,2) !== 'GD' )
-                    bhyt.tongTien = 0
                 const diffTime = (new Date(bhyt.denNgayDt) - new Date());
                 if(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) < 31){
                     const soNguoiThamGia = this.dsBhyts.filter(item=> item.tongTien).length;
@@ -176,6 +187,7 @@ export default {
                 if (found) Object.assign(found, bhyt);
                 else this.dsBhyts.push(bhyt);
             }
+            
         },
         async getTaiTuc(){
             this.dsBhyts = await fetch("https://cmsbudientulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
@@ -189,23 +201,41 @@ export default {
             return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
         },
         async remove(maSoBhxh){
-            const dsBhyts = this.dsBhyts.filter(i => i.maSoBhxh !== maSoBhxh)
-            for (let index = 0; index < dsBhyts.length; index++) {
-                const bhyt = dsBhyts[index];
+            this.dsBhyts = this.dsBhyts.filter(i => i.maSoBhxh !== maSoBhxh)
+            this.tinhLaiMucDong();
+        },
+        async tinhLaiMucDong(){
+            const dsBhytsCopy = [...this.dsBhyts];
+            for (let index = 0; index < dsBhytsCopy.length; index++) {
+                const bhyt = dsBhytsCopy[index];
                 if(bhyt.soTheBhyt.slice(0,2) !== 'GD' || new Date(bhyt.tuNgayDt).toISOString().slice(0,4) !== '2022' )
                     bhyt.tongTien = 0
             }
-            this.dsBhyts = []
-            await this.capNhatDanhSach(dsBhyts);
+            this.dsBhyts = [];
+            await this.capNhatDanhSach(dsBhytsCopy.filter(item => item.tongTien));
+            await this.capNhatDanhSach(dsBhytsCopy.filter(item => !item.tongTien));
         },
-    },
-    created(){
-        
-        if (this.$route.query.q) {
-            const q = this.$route.query.q;
-            this.searchText = q;
-            this.timKiem(q);
+        async taoDonHang(){
+            const query = Object.assign({}, this.$route.query);
+            query.maSoBhxhs= this.dsBhyts.map(item => item.maSoBhxh).join(",");
+            await this.$router.push({ query });
         }
+    },
+    async created(){
+        const {q, maHoGD, maSoBhxhs} = this.$route.query;
+        if(maSoBhxhs) {
+            await this.getAllByMaSoBhxhs(maSoBhxhs);
+            await this.tinhLaiMucDong();
+            return;
+        }
+        if (q) {
+            await this.timKiem(q);
+        }
+        //maHoGd
+        if (maHoGD) {
+            await this.getAllByMaHoGd(maHoGD);
+        }
+        this.tinhLaiMucDong();
     },
     filters: {
         ngayThang: function (value) {
@@ -220,12 +250,11 @@ export default {
             if (!value) return ''
             if(isNaN(value)) return ''
             return new Date([value.substr(0,4),value.substr(4,2),value.substr(6,2)].join("-")).toLocaleDateString();;
-            // value = value.toString()
-            // return value.charAt(0).toUpperCase() + value.slice(1)
         },
         soNgay(value){
-            if (!value) return ''
-            const diffTime = (new Date(value) - new Date());
+            if (!value.denNgayDt) return ''
+            if(value.coTheUuTienCaoHon) return 'Có thẻ ưu tiên'
+            const diffTime = (new Date(value.denNgayDt) - new Date());
             return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
         },
         soTien(value){

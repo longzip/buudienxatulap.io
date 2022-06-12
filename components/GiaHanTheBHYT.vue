@@ -177,7 +177,7 @@ export default {
                 const bhyt = theBHYTs[index];
                 const diffTime = (new Date(bhyt.denNgayDt) - new Date());
                 if(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) < 31){
-                    const soNguoiThamGia = this.dsBhyts.filter(item=> item.tongTien).length;
+                    const soNguoiThamGia = this.dsBhyts.filter(item=> (item.tongTien || (new Date(item.tuNgayDt).toISOString().slice(0,4) === '2022' && item.soTheBhyt.slice(0,2) === 'GD'))).length;
                     const thu = soNguoiThamGia < 5 ? soNguoiThamGia + 1 : 5
                     bhyt.tongTien = this.mucDong[thu]
                 }
@@ -212,7 +212,7 @@ export default {
                     bhyt.tongTien = 0
             }
             this.dsBhyts = [];
-            await this.capNhatDanhSach(dsBhytsCopy.filter(item => item.tongTien));
+            await this.capNhatDanhSach(dsBhytsCopy.filter(item => item.tongTien || (new Date(item.tuNgayDt).toISOString().slice(0,4) === '2022' && item.soTheBhyt.slice(0,2) === 'GD')));
             await this.capNhatDanhSach(dsBhytsCopy.filter(item => !item.tongTien));
         },
         async taoDonHang(){

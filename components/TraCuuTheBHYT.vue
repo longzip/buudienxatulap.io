@@ -92,17 +92,86 @@ export default {
        return {
            searchText: "",
             dsBhyts: [],
+            key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMxNTIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTQyMDEwX2dpYW9kaWNodmllbiIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiNDlmMGM0YWUtNTcyNi0yOTk3LTliYzYtMzlmMzcxYTViYmM5IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMTQyMDEwX2dpYW9kaWNodmllbiIsImlzQ2FzIjoiRmFsc2UiLCJzdWIiOiIzMTUyIiwianRpIjoiZGU1MTk3ZmUtOTk1MS00MTZkLWFkNjgtODEyYzY0MWY5ZmVmIiwiaWF0IjoxNjU1NjAyMTI3LCJuYmYiOjE2NTU2MDIxMjcsImV4cCI6MTY1NTY4ODUyNywiaXNzIjoiUWxkdiIsImF1ZCI6IlFsZHYifQ.-1LU3cFHKS_7bEcO97mTG8yyrzh7HgAE_6JK1dw_JF8'
        } 
     },
     methods:{
+        async fetchAPIByName(searchText){
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.key}`
+            }
+
+            const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuMaSoBHXH?maTinh=01&maHuyen=250&maXa=08986&hoTen=${searchText}&isCoDau=true&`;
+
+            const res = await fetch(API_URL, {
+                method: 'GET',
+                headers
+            })
+
+            const json = await res.json()
+            if (json.errors) {
+                console.error(json.errors)
+                throw new Error('Failed to fetch API')
+            }
+            
+            return json.result.value
+        },
+        async fetchAPIByMaSoBhxh(maSoBhxh){
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.key}`
+            }
+
+            const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuThongTinBHYT?maSoBhxh=${maSoBhxh.slice(maSoBhxh.length - 10)}`;
+
+            const res = await fetch(API_URL, {
+                method: 'GET',
+                headers
+            })
+
+            const json = await res.json()
+            if (json.errors) {
+                console.error(json.errors)
+                throw new Error('Failed to fetch API')
+            }
+            return json.result
+        },
+
+        async dongBo(maSoBhxh){
+            try {
+                    const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSoBhxh);
+                    const theBHYT = {...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe};
+                    let found = this.dsBhyts.find(
+                        (x) => x.maSoBhxh === theBHYT.maSoBhxh || x.soSoBhxh === theBHYT.soSoBhxh
+                    );
+                    if(!found) this.dsBhyts.push(theBHYT)
+                } catch (error) {
+                    console.log(error);
+                }
+        },
+
         async timKiem() {
             if(!this.searchText) return;
             const name = this.searchText.split(" ").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" ");
             const regex = /[0-9]/g;
             const maSo = this.searchText.match(regex);
-            this.dsBhyts = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
-                res.json()
-            );
+
+            if(maSo){
+                await this.dongBo(maSo.join(""));
+            }
+            else{
+                this.dsBhyts = []
+                try {
+                    const dsBhyts = await this.fetchAPIByName(name);
+                    for (let index = 0; index < dsBhyts.length; index++) {
+                        const {maSoBhxh} = dsBhyts[index];
+                        await this.dongBo(maSoBhxh);
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
         },
         async getTaiTuc(){
             this.dsBhyts = await fetch("https://cmsbudientulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
@@ -122,8 +191,8 @@ export default {
             this.searchText = q;
             this.timKiem(q);
         }
-        else
-        this.getTaiTuc();
+        // else
+        // this.getTaiTuc();
     },
     filters: {
         ngayThang: function (value) {

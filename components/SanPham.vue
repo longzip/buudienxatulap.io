@@ -13,6 +13,25 @@
             </div>
           </div>
           <div class="flex flex-wrap">
+            <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+              <div class="px-6">
+                <img
+                  alt="Đóng bảo hiểm xã hội tự nguyện"
+                  src="/images/bao-hiem-xa-hoi.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px;"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Đóng BHXH tự nguyện</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    HƯỞNG LƯƠNG HƯU
+                  </p>
+                  <div class="mt-6">
+                    <p>Đóng bảo hiểm xã hội tự nguyện và bảo hiểm y tế ở bưu điện liên hệ chị Thắm 0978333963.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
               <!-- Bảo hiểm bắt buộc ô tô, xe máy: quyền lợi vượt trội phí mua -->
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
@@ -74,25 +93,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-              <div class="px-6">
-                <img
-                  alt="Đóng bảo hiểm xã hội tự nguyện"
-                  src="/images/bao-hiem-xa-hoi.jpg"
-                  class="shadow-lg rounded-full max-w-full mx-auto"
-                  style="max-width: 120px;"
-                />
-                <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Đóng BHXH tự nguyện</h5>
-                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    HƯỞNG LƯƠNG HƯU
-                  </p>
-                  <div class="mt-6">
-                    <p>Đóng bảo hiểm xã hội tự nguyện và bảo hiểm y tế ở bưu điện liên hệ chị Thắm 0978333963.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             
           </div>
         </div>

@@ -24,10 +24,10 @@
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
 
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Họ tên:
+                    Họ và tên hoặc mã số BHXH, BHYT:
                 </label>
                 <input v-model="searchText" @keydown.enter="timKiem()" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
-                <p class="text-red-500 text-xs italic mb-5">Có thể tìm theo số điện thoại, mã số thẻ BHYT hoặc tên.</p>
+                <p class="text-red-500 text-xs italic mb-5">Tìm kiếm theo họ và tên hoặc nhập mã số thẻ BHYT rồi bấm nút Tra cứu.</p>
                 <div class="flex items-center justify-between ">
                     <button @click="timKiem()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tra cứu

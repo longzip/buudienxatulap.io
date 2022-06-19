@@ -117,6 +117,7 @@ export default {
             
             return json.result.value
         },
+
         async fetchAPIByMaSoBhxh(maSoBhxh){
             const headers = {
                 'Content-Type': 'application/json',
@@ -137,6 +138,27 @@ export default {
             }
             return json.result
         },
+        
+        async save(bhyt){
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+
+            const API_URL = 'https://cmsbudientulap.herokuapp.com/api/bhyts';
+
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(bhyt)
+            })
+
+            const json = await res.json()
+            if (json.errors) {
+                console.error(json.errors)
+                throw new Error('Failed to fetch API')
+            }
+            return json
+        },
 
         async dongBo(maSoBhxh){
             try {
@@ -145,7 +167,10 @@ export default {
                     let found = this.dsBhyts.find(
                         (x) => x.maSoBhxh === theBHYT.maSoBhxh || x.soSoBhxh === theBHYT.soSoBhxh
                     );
-                    if(!found) this.dsBhyts.push(theBHYT)
+                    if(!found) {
+                        const bhyt = await this.save(theBHYT)
+                        this.dsBhyts.push(bhyt);
+                    }
                 } catch (error) {
                     console.log(error);
                 }

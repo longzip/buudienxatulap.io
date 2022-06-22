@@ -92,11 +92,12 @@ export default {
        return {
            searchText: "",
             dsBhyts: [],
-            key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMxNTIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTQyMDEwX2dpYW9kaWNodmllbiIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiNDlmMGM0YWUtNTcyNi0yOTk3LTliYzYtMzlmMzcxYTViYmM5IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMTQyMDEwX2dpYW9kaWNodmllbiIsImlzQ2FzIjoiRmFsc2UiLCJzdWIiOiIzMTUyIiwianRpIjoiYTJmODM0YTktZGE1MC00M2Q2LWE1YjktYmFjOTIyODJkMGQ2IiwiaWF0IjoxNjU1ODU4MjcyLCJuYmYiOjE2NTU4NTgyNzIsImV4cCI6MTY1NTk0NDY3MiwiaXNzIjoiUWxkdiIsImF1ZCI6IlFsZHYifQ.TGWfCVWE0Jj36OF2kn7CxxYqx4HJBrOuLrAfdASNqi8'
+            key: ''
        } 
     },
     methods:{
         async fetchAPIByName(searchText){
+            if(!this.key) await this.getAuth();
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${this.key}`
@@ -119,6 +120,7 @@ export default {
         },
 
         async fetchAPIByMaSoBhxh(maSoBhxh){
+            if(!this.key) await this.getAuth();
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${this.key}`
@@ -137,6 +139,21 @@ export default {
                 throw new Error('Failed to fetch API')
             }
             return json.result
+        },
+
+        async fetchUserGhiChu(){
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+
+            const API_URL = 'https://cmsbudientulap.herokuapp.com/api/user-ghi-chu';
+
+            const res = await fetch(API_URL, {
+                method: 'GET',
+                headers
+            })
+            const text = await res.text()
+            return text
         },
         
         async save(bhyt){
@@ -207,9 +224,15 @@ export default {
             if(!value) return false;
             const diffTime = (new Date(value) - new Date());
             return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
+        },
+        async getAuth(){
+            this.key = await this.fetchUserGhiChu();
         }
+
     },
-    created(){
+    async created(){
+
+        this.getAuth();
         
         if (this.$route.query.q) {
             const q = this.$route.query.q;

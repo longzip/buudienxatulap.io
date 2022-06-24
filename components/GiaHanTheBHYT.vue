@@ -29,7 +29,7 @@
                 <input v-model="searchText" @keydown.enter="timKiem(searchText)" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
                 <p class="text-red-500 text-xs italic mb-5">Có thể tìm theo số điện thoại, mã số thẻ BHYT hoặc tên.</p>
                 <div class="flex items-center justify-between ">
-                    <button @click="timKiem(searchText)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <button @click="traCuu(searchText)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tra cứu
                     </button>
                     <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="tel:0978333963">
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                         <div class="float-right">
-                            <button v-if="tongCong" @click="taoDonHang()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            <button v-if="tongCong" @click="inKeKhai()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                                 Đồng ý
                             </button>
                         </div>
@@ -142,11 +142,93 @@ export default {
                 4: 402300 ,
                 5: 321840,
             },
-            showTaiKhoan: false
-                
+            showTaiKhoan: false,
+            key: ''    
        } 
     },
     methods:{
+        async fetchUserGhiChu(){
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+
+            const API_URL = 'https://cmsbudientulap.herokuapp.com/api/user-ghi-chu';
+
+            const res = await fetch(API_URL, {
+                method: 'GET',
+                headers
+            })
+            const text = await res.text()
+            return text
+        },
+        async fetchAPIByMaSoBhxh(maSoBhxh){
+            if(!this.key) await this.getAuth();
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.key}`
+            }
+
+            const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuThongTinBHYT?maSoBhxh=${maSoBhxh.slice(maSoBhxh.length - 10)}`;
+
+            const res = await fetch(API_URL, {
+                method: 'GET',
+                headers
+            })
+
+            const json = await res.json()
+            if (json.errors) {
+                console.error(json.errors)
+                throw new Error('Failed to fetch API')
+            }
+            return json.result
+        },
+        async getAuth(){
+            this.key = await this.fetchUserGhiChu();
+        },
+        async save(bhyt){
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+
+            const API_URL = 'https://cmsbudientulap.herokuapp.com/api/bhyts';
+
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(bhyt)
+            })
+
+            const json = await res.json()
+            if (json.errors) {
+                console.error(json.errors)
+                throw new Error('Failed to fetch API')
+            }
+            return json
+        },
+        async dongBo(maSoBhxh){
+            try {
+                    const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSoBhxh);
+                    const theBHYT = {...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe};
+                    let found = this.dsBhyts.find(
+                        (x) => x.maSoBhxh === theBHYT.maSoBhxh || x.soSoBhxh === theBHYT.soSoBhxh
+                    );
+                    if(!found) {
+                        const bhyt = await this.save(theBHYT)
+                        this.capNhatDanhSach([...this.dsBhyts, bhyt]);
+                        this.searchText = '';
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+        },
+        async traCuu(searchText) {
+            if(!searchText) return;
+            const name = searchText.split(" ").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" ");
+            const regex = /[0-9]/g;
+            const maSo = name.match(regex);
+            if(!maSo) return;
+            await this.dongBo(maSo);
+        },
         async timKiem(searchText) {
             if(!searchText) return;
             const name = searchText.split(" ").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" ");
@@ -187,6 +269,7 @@ export default {
                 if (found) Object.assign(found, bhyt);
                 else this.dsBhyts.push(bhyt);
             }
+            this.taoDonHang();
             
         },
         async getTaiTuc(){
@@ -219,9 +302,16 @@ export default {
             const query = Object.assign({}, this.$route.query);
             query.maSoBhxhs= this.dsBhyts.map(item => item.maSoBhxh).join(",");
             await this.$router.push({ query });
+        },
+        inKeKhai(){
+            let a = document.createElement('a');
+            a.target = '_blank';
+            a.href = `https://cmsbudientulap.herokuapp.com/thanh-vien-ho-gia-dinh/1/pdf?maSoBhxhs=${this.dsBhyts.map(item => item.maSoBhxh).join(",")}`;
+            a.click();
         }
     },
     async created(){
+        this.getAuth();
         const {q, maHoGD, maSoBhxhs} = this.$route.query;
         if(maSoBhxhs) {
             await this.getAllByMaSoBhxhs(maSoBhxhs);

@@ -26,8 +26,8 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Mã số Thẻ BHYT:
                 </label>
-                <input v-model="searchText" @keydown.enter="timKiem(searchText)" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
-                <p class="text-red-500 text-xs italic mb-5">Có thể tìm theo số điện thoại, mã số thẻ BHYT hoặc tên.</p>
+                <input v-model="searchText" @keydown.enter="timKiem(searchText)" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Mã số thẻ BHYT">
+                <p class="text-red-500 text-xs italic mb-5">Nhập mã số thẻ BHYT của các thành viên trong hộ gia đình để tra cứu mức đóng.</p>
                 <div class="flex items-center justify-between ">
                     <button @click="timKiem(searchText)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tra cứu

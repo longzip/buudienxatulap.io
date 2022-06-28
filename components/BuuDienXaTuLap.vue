@@ -75,17 +75,17 @@
               <p
                 class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
               >
-                Ngoài bưu chính công ích, chuyển phát thư, báo, hàng hóa... còn phục vụ chi trả lương hưu và trợ cấp bảo hiểm xã hội (BHXH), thu bảo hiểm y tế (BHYT) cho người dân; kinh doanh hàng tiêu dùng thiết yếu.
+                Chi trả lương hưu và trợ cấp bảo hiểm xã hội (BHXH), thu bảo hiểm y tế (BHYT) cho người dân xã Tự Lập.
               </p>
               <p
                 class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
               >
-                Điểm bán hàng tiêu dùng thiết yếu, Bưu điện Văn hóa xã Tự Lập, người dân có thể tới trực tiếp để lựa chọn và mua hàng không bị giới hạn về số lượng. Nếu không muốn tới các điểm bán hàng, người dân hoàn toàn có thể gọi điện cho bưu tá, các bưu cục gần nhà nhất để yêu cầu cung cấp các loại hàng hóa mình cần. Sau khi nhận đơn, nhân viên Bưu điện sẽ chuyển phát miễn phí toàn bộ hàng hóa khách hàng yêu cầu đến tận nhà trong thời gian sớm nhất.
+                Nhận gửi thư từ, hàng hóa, bán các hàng tiêu dùng thiết yếu phân phối bởi bưu điện Hà Nội.
               </p>
               <a
-                href="tel:0978333963"
+                href="https://www.facebook.com/ThamBuuDien"
                 class="font-bold text-gray-800 mt-8"
-                >Đặt lịch hẹn với Giao dịch viên!</a
+                >Tìm hiểu thêm</a
               >
             </div>
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
@@ -93,8 +93,8 @@
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blue-600"
               >
                 <img
-                  alt="..."
-                  src="/images/buu-dien-van-hoa-xa-tu-lap-ho-thi-tham.jpg"
+                  alt="Hồ Thị Thắm - Ở Bưu điện xã Tự Lập"
+                  src="/images/ho-thi-tham-o-buu-dien-xa-tu-lap.jpg"
                   class="w-full align-middle rounded-t-lg"
                 />
                 <blockquote class="relative p-8 mb-4">

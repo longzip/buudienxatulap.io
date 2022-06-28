@@ -117,8 +117,8 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/tim-kiem-ma-giam-gia/"
-                    >Tìm kiếm mã giảm giá</a
+                    href="/gia-han-the-bhyt-tai-nha/"
+                    >Tra cứu mức đóng BHYT</a
                   >
                 </li>
               </ul>

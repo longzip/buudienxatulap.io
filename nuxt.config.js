@@ -8,14 +8,14 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Bưu điện văn hóa xã Tự Lập',
+    title: 'Hồ Thị Thắm | Bưu điện văn hóa xã Tự Lập',
     htmlAttrs: {
       lang: 'vi'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Hồ Thị Thắm làm ở Bưu điện xã Tự Lập từ tháng 8/2021 với các dịch vụ Thu Bảo hiểm y tế, bảo hiểm xã Hội tự nguyện.' },
       { hid: 'zalo-platform-site-verification', name: 'zalo-platform-site-verification', content: 'JjQ5CPpWKsX8_lWqlz1N36F3nYEFiXnyDpO' },
       { name: 'format-detection', content: 'telephone=no' }
     ],

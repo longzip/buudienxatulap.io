@@ -27,7 +27,7 @@
                     Mã số Thẻ BHYT:
                 </label>
                 <input v-model="searchText" @keydown.enter="timKiem(searchText)" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Mã số thẻ BHYT">
-                <p class="text-red-500 text-xs italic mb-5">Nhập mã số thẻ BHYT của các thành viên trong hộ gia đình để tra cứu mức đóng.</p>
+                <p class="text-red-500 text-xs italic mb-5">Nhập mã số thẻ BHYT của các thành viên trong hộ gia đình (từng người một) để tra cứu mức đóng.</p>
                 <div class="flex items-center justify-between ">
                     <button @click="timKiem(searchText)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tra cứu
@@ -96,13 +96,15 @@
                                     </tr>
                                 </tbody>
                                 </table>
-                                Tổng cộng: {{ tongCong | soTien }}
-                                <p v-if="showTaiKhoan">Thực hiện chuyển số tiền cần đóng cho nhân viên bưu điện xã Tự Lập theo những thông tin dưới đây:<br>
-                                    Tài khoản: HO THI THAM<br>
-                                    Số tài khoản: 0711000234239<br>
-                                    Ngân hàng thụ hưởng: Vietcombank<br>
-                                    (Hoặc nộp tiền mặt trực tiếp tại Bưu điện xã Tự Lập cạnh trạm y tế xã).
-                                </p>
+                                <div class="flex  items-center justify-between ">
+                                    <div> Tổng cộng: {{ tongCong | soTien }}</div>
+                                    <p class="text-xs ">Thông tin chuyển khoản:<br>
+                                        Tài khoản: HO THI THAM<br>
+                                        Số tài khoản: 0711000234239<br>
+                                        Ngân hàng thụ hưởng: Vietcombank<br>
+                                        (Hoặc nộp tiền mặt trực tiếp tại Bưu điện xã Tự Lập cạnh trạm y tế xã).
+                                    </p>
+                                </div>
                             </div>
                             </div>
                         </div>

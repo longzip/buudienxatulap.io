@@ -10,13 +10,13 @@
                   <div
                     class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-</svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M15.707 4.293a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 011.414-1.414L10 8.586l4.293-4.293a1 1 0 011.414 0zm0 6a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L10 14.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
                   </div>
-                  <h6 class="text-xl font-semibold">Điểm bán hàng tiêu dùng</h6>
+                  <h6 class="text-xl font-semibold">Đại lý thu BHXH, BHYT</h6>
                   <p class="mt-2 mb-4 text-gray-600">
-                    Các sản phẩm chất lượng, thương hiệu uy tín trên thị trường, giá cả phù hợp với nhu cầu và điều kiện của người dân khu vực nông thôn.
+                    Gia hạn thẻ bảo hiểm y tế theo hộ gia đình với giảm trừ mức đóng ở Bưu điện xã Tự Lập liên hệ chị Hồ Thị Thắm.
                   </p>
                 </div>
               </div>

@@ -153,21 +153,19 @@ export default {
   },
   mounted(){
     const chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute('page_id', '282651960200595');
-      chatbox.setAttribute('attribution', 'biz_inbox');
+      chatbox.setAttribute("page_id", "103440001315066");
+      chatbox.setAttribute("attribution", "biz_inbox");
 
-      window.fbAsyncInit = function() {
-        // eslint-disable-next-line no-undef
+       window.fbAsyncInit = function() {
         FB.init({
           xfbml            : true,
-          version          : 'v12.0'
+          version          : 'v14.0'
         });
       };
 
       (function(d, s, id) {
-        let js; const fjs = d.getElementsByTagName(s)[0];
+        var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        // eslint-disable-next-line prefer-const
         js = d.createElement(s); js.id = id;
         js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);

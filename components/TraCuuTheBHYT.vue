@@ -249,7 +249,7 @@ export default {
         },
         namSinh: function (value) {
             if (!value) return ''          
-            return new Date(value).toISOString().slice(0,4);
+            return new Date(value).toLocaleDateString();
         },
         ngayThangString: function (value) {
             if (!value) return ''

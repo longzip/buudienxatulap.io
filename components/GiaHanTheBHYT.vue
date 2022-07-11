@@ -282,8 +282,7 @@ export default {
         isConHan(value){
             if(!value) return false;
             const diffTime = (new Date(value) - new Date());
-            console.log(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30);
-            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 90;
         },
         async remove(maSoBhxh){
             this.dsBhyts = this.dsBhyts.filter(i => i.maSoBhxh !== maSoBhxh)

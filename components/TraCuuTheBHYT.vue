@@ -223,7 +223,7 @@ export default {
         isConHan(value){
             if(!value) return false;
             const diffTime = (new Date(value) - new Date());
-            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 60;
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 90;
         },
         async getAuth(){
             this.key = await this.fetchUserGhiChu();

@@ -1,7 +1,7 @@
 <template>
     <main>
       <TieuDe title="Tính mức đóng và lương hưu dự tính" desc="Chế độ BHXH tự nguyện được quy định tại chương IV Luật BHXH số 58/2014/QH13 được Quốc hội thông qua ngày 20/11/2014, được Chính phủ quy định chi tiết tại Nghị định số 134/2015/NĐ-CP ngày 29/12/2015, Thông tư hướng dẫn một số điều về BHXH tự nguyện số 01/2016/TT-BLĐTBXH ngày 18/2/2016 của Bộ Lao động Thương binh và xã hội." />
-      <section class="pb-20 bg-yellow-200 -mt-24">
+      <!-- <section class="pb-20 bg-yellow-200 -mt-24">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap">
             <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
@@ -212,7 +212,7 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <section class="pt-20 pb-48">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap justify-center text-center mb-24">

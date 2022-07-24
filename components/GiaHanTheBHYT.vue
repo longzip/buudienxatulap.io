@@ -154,7 +154,7 @@ export default {
                 'Content-Type': 'application/json'
             }
 
-            const API_URL = 'https://cmsbudientulap.herokuapp.com/api/user-ghi-chu';
+            const API_URL = 'https://cmstulap.herokuapp.com/api/user-ghi-chu';
 
             const res = await fetch(API_URL, {
                 method: 'GET',
@@ -192,7 +192,7 @@ export default {
                 'Content-Type': 'application/json'
             }
 
-            const API_URL = 'https://cmsbudientulap.herokuapp.com/api/bhyts';
+            const API_URL = 'https://cmstulap.herokuapp.com/api/bhyts';
 
             const res = await fetch(API_URL, {
                 method: 'POST',
@@ -237,21 +237,21 @@ export default {
             const regex = /[0-9]/g;
             const maSo = name.match(regex);
             if(!maSo) return;
-            const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
+            const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
                 res.json()
             );
             await this.capNhatDanhSach(theBHYTs);
         },
         async getAllByMaHoGd(maHoGd) {
             if(!maHoGd) return;
-            const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&maHoGd=${maHoGd}`).then(res =>
+            const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&maHoGd=${maHoGd}`).then(res =>
                 res.json()
             );
             await this.capNhatDanhSach(theBHYTs.filter(item=>item.tuNgayDt));
         },
         async getAllByMaSoBhxhs(maSoBhxhs) {
             if(!maSoBhxhs) return;
-            const theBHYTs = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&maSoBhxhs=${maSoBhxhs}`).then(res =>
+            const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&maSoBhxhs=${maSoBhxhs}`).then(res =>
                 res.json()
             );
             await this.capNhatDanhSach(theBHYTs.filter(item=>item.tuNgayDt));
@@ -275,7 +275,7 @@ export default {
             
         },
         async getTaiTuc(){
-            this.dsBhyts = await fetch("https://cmsbudientulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
+            this.dsBhyts = await fetch("https://cmstulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
                 res.json()
             );
         },
@@ -307,7 +307,7 @@ export default {
         inKeKhai(){
             let a = document.createElement('a');
             a.target = '_blank';
-            a.href = `https://cmsbudientulap.herokuapp.com/thanh-vien-ho-gia-dinh/1/pdf?maSoBhxhs=${this.dsBhyts.map(item => item.maSoBhxh).join(",")}`;
+            a.href = `https://cmstulap.herokuapp.com/thanh-vien-ho-gia-dinh/1/pdf?maSoBhxhs=${this.dsBhyts.map(item => item.maSoBhxh).join(",")}`;
             a.click();
         }
     },

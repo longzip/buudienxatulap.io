@@ -237,7 +237,7 @@ export default {
             const regex = /[0-9]/g;
             const maSo = name.match(regex);
             if(!maSo) return;
-            const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSoBhxh);
+            const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSo.join(""));
             const theBHYT = {...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe};
             // const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
             //     res.json()

@@ -237,10 +237,13 @@ export default {
             const regex = /[0-9]/g;
             const maSo = name.match(regex);
             if(!maSo) return;
-            const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
-                res.json()
-            );
-            await this.capNhatDanhSach(theBHYTs);
+            const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSoBhxh);
+            const theBHYT = {...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe};
+            // const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
+            //     res.json()
+            // );
+            const bhyt = await this.save(theBHYT)
+            await this.capNhatDanhSach([bhyt]);
         },
         async getAllByMaHoGd(maHoGd) {
             if(!maHoGd) return;

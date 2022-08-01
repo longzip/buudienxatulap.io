@@ -146,7 +146,7 @@ export default {
                 'Content-Type': 'application/json'
             }
 
-            const API_URL = 'https://cmstulap.herokuapp.com/api/user-ghi-chu';
+            const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/user-ghi-chu';
 
             const res = await fetch(API_URL, {
                 method: 'GET',
@@ -161,7 +161,7 @@ export default {
                 'Content-Type': 'application/json'
             }
 
-            const API_URL = 'https://cmstulap.herokuapp.com/api/bhyts';
+            const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/bhyts';
 
             const res = await fetch(API_URL, {
                 method: 'POST',
@@ -216,7 +216,7 @@ export default {
             }
         },
         async getTaiTuc(){
-            this.dsBhyts = await fetch("https://cmstulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
+            this.dsBhyts = await fetch("https://cms.buudienhuyenmelinh.vn/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
                 res.json()
             );
         },

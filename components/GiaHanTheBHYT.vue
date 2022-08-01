@@ -154,7 +154,7 @@ export default {
                 'Content-Type': 'application/json'
             }
 
-            const API_URL = 'https://cmstulap.herokuapp.com/api/user-ghi-chu';
+            const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/user-ghi-chu';
 
             const res = await fetch(API_URL, {
                 method: 'GET',
@@ -192,7 +192,7 @@ export default {
                 'Content-Type': 'application/json'
             }
 
-            const API_URL = 'https://cmstulap.herokuapp.com/api/bhyts';
+            const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/bhyts';
 
             const res = await fetch(API_URL, {
                 method: 'POST',
@@ -239,7 +239,7 @@ export default {
             if(!maSo) return;
             const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSo.join(""));
             const theBHYT = {...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe};
-            // const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
+            // const theBHYTs = await fetch(`https://cms.buudienhuyenmelinh.vn/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
             //     res.json()
             // );
             const bhyt = await this.save(theBHYT)
@@ -247,14 +247,14 @@ export default {
         },
         async getAllByMaHoGd(maHoGd) {
             if(!maHoGd) return;
-            const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&maHoGd=${maHoGd}`).then(res =>
+            const theBHYTs = await fetch(`https://cms.buudienhuyenmelinh.vn/api/bhyts?&maHoGd=${maHoGd}`).then(res =>
                 res.json()
             );
             await this.capNhatDanhSach(theBHYTs.filter(item=>item.tuNgayDt));
         },
         async getAllByMaSoBhxhs(maSoBhxhs) {
             if(!maSoBhxhs) return;
-            const theBHYTs = await fetch(`https://cmstulap.herokuapp.com/api/bhyts?&maSoBhxhs=${maSoBhxhs}`).then(res =>
+            const theBHYTs = await fetch(`https://cms.buudienhuyenmelinh.vn/api/bhyts?&maSoBhxhs=${maSoBhxhs}`).then(res =>
                 res.json()
             );
             await this.capNhatDanhSach(theBHYTs.filter(item=>item.tuNgayDt));
@@ -278,7 +278,7 @@ export default {
             
         },
         async getTaiTuc(){
-            this.dsBhyts = await fetch("https://cmstulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
+            this.dsBhyts = await fetch("https://cms.buudienhuyenmelinh.vn/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
                 res.json()
             );
         },
@@ -310,7 +310,7 @@ export default {
         inKeKhai(){
             let a = document.createElement('a');
             a.target = '_blank';
-            a.href = `https://cmstulap.herokuapp.com/thanh-vien-ho-gia-dinh/1/pdf?maSoBhxhs=${this.dsBhyts.map(item => item.maSoBhxh).join(",")}`;
+            a.href = `https://cms.buudienhuyenmelinh.vn/thanh-vien-ho-gia-dinh/1/pdf?maSoBhxhs=${this.dsBhyts.map(item => item.maSoBhxh).join(",")}`;
             a.click();
         }
     },

@@ -27,28 +27,6 @@
             Yêu mọi người quá. Có câu hỏi gì cần cứ biểu ạ, Hồ Thị Thắm sẽ trả lời hết nha!
           </h5>
           <div class="zalo-follow-only-button" data-oaid="907870636305349915"></div>
-          <div class="mt-6">
-            <a target="_blank" href="https://youtube.com/channel/UC8skczWH9dMoyzU0LPYQ4yA?sub_confirmation=1"
-              class="bg-white text-red-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-            >
-              <i class="flex fab fa-youtube"></i></a
-            ><a target="_blank" href="https://www.facebook.com/ThamBuuDien"
-              class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-              
-            >
-              <i class="flex fab fa-facebook-square"></i></a
-            ><a  target="_blank" href="https://blog.thambuudien.ga/"
-              class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-
-            >
-              <i class="flex fab fa-instagram"></i></a
-            ><a target="_blank" href="https://blog.thambuudien.ga/"
-              class="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-
-            >
-              <i class="flex fab fa-tiktok"></i>
-            </a>
-          </div>
         </div>
         <div class="w-full lg:w-6/12 px-4">
           <div class="flex flex-wrap items-top mb-6">
@@ -157,14 +135,14 @@
             Copyright © {{date}} Bưu điện văn hóa xã Tự Lập. Thiết kế website hiện đại cùng
             <a
               href="https://lovanlong.ga/"
-              class="text-yellow-500 hover:text-yellow-800"
+              class="text-gray-600 hover:text-gray-900"
               >Lỗ Văn Long</a
             >.
           </div>
         </div>
       </div>
     </div>
-  </footer>
+</footer>
 </template>
 <script>
 export default {
@@ -173,7 +151,7 @@ export default {
       date: new Date().getFullYear()
     }
   },
-    mounted(){
+  mounted(){
     const chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute("page_id", "103440001315066");
       chatbox.setAttribute("attribution", "biz_inbox");

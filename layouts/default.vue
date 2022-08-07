@@ -23,3 +23,9 @@
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
   </div>
 </template>
+<script>
+import "@fortawesome/fontawesome-free/css/all.min.css";
+export default {
+  
+}
+</script>

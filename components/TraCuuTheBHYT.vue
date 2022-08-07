@@ -1,24 +1,5 @@
 <template>
     <section class="relative py-20">
-        <div
-          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-          style="height: 80px;"
-        >
-          <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-white fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
         <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
@@ -26,10 +7,10 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Họ và tên hoặc mã số BHXH, BHYT:
                 </label>
-                <input v-model="searchText" @keydown.enter="timKiem()" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
+                <input id="grid-first-name" v-model="searchText" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Tên" @keydown.enter="timKiem()">
                 <p class="text-red-500 text-xs italic mb-5">Tìm kiếm theo họ và tên hoặc nhập mã số thẻ BHYT rồi bấm nút Tra cứu.</p>
                 <div class="flex items-center justify-between ">
-                    <button @click="timKiem()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" @click="timKiem()">
                         Tra cứu
                     </button>
                     <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="tel:0978333963">
@@ -65,7 +46,7 @@
                                 </div>
                                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
                                     <div>{{ bhyt.denNgayDt | soNgay}}</div>
-                                    <a target="_blank" v-if="!isConHan(bhyt.denNgayDt)" :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
+                                    <a v-if="!isConHan(bhyt.denNgayDt)" target="_blank" :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
                                 </div>
                             </div>
                         </li>
@@ -75,8 +56,8 @@
                     </p>
                 </div>
                 <div v-else>
-                    <p class="text-center text-gray-500 text-xs">
-                        Không có kết quả phù hợp!
+                    <p class="text-center text-yellow-500 text-2xl pt-16">
+                        Không cần nhớ mã số thẻ BHYT vẫn tra cứu được thời hạn sử dụng của thẻ? Chỉ cần nhập họ và tên của bạn hoặc mã số thẻ vào ô tìm kiếm Hồ Thị Thắm sẽ hiển thị kế quả chính xác cho bạn.
                     </p>
                 </div>
                 
@@ -88,12 +69,40 @@
 </template>
 <script>
 export default {
+    filters: {
+        ngayThang (value) {
+            if (!value) return ''          
+            return new Date(value).toLocaleDateString();
+        },
+        namSinh (value) {
+            if (!value) return ''          
+            return new Date(value).toLocaleDateString();
+        },
+        ngayThangString (value) {
+            if (!value) return ''
+            if(isNaN(value)) return ''
+            return new Date([value.substr(0,4),value.substr(4,2),value.substr(6,2)].join("-")).toLocaleDateString();;
+        },
+        soNgay(value){
+            if (!value) return ''
+            const diffTime = (new Date(value) - new Date());
+            return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
+        }
+    },
     data() {
        return {
            searchText: "",
             dsBhyts: [],
             key: ''
        } 
+    },
+    created(){
+        this.getAuth();      
+        if (this.$route.query.q) {
+            const q = this.$route.query.q;
+            this.searchText = q;
+            this.timKiem(q);
+        }
     },
     methods:{
         async fetchAPIByName(searchText){
@@ -112,7 +121,6 @@ export default {
 
             const json = await res.json()
             if (json.errors) {
-                console.error(json.errors)
                 throw new Error('Failed to fetch API')
             }
             
@@ -135,7 +143,6 @@ export default {
 
             const json = await res.json()
             if (json.errors) {
-                console.error(json.errors)
                 throw new Error('Failed to fetch API')
             }
             return json.result
@@ -171,7 +178,7 @@ export default {
 
             const json = await res.json()
             if (json.errors) {
-                console.error(json.errors)
+                // console.error(json.errors)
                 throw new Error('Failed to fetch API')
             }
             return json
@@ -181,7 +188,7 @@ export default {
             try {
                     const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSoBhxh);
                     const theBHYT = {...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe};
-                    let found = this.dsBhyts.find(
+                    const found = this.dsBhyts.find(
                         (x) => x.maSoBhxh === theBHYT.maSoBhxh || x.soSoBhxh === theBHYT.soSoBhxh
                     );
                     if(!found) {
@@ -189,7 +196,6 @@ export default {
                         this.dsBhyts.push(bhyt);
                     }
                 } catch (error) {
-                    console.log(error);
                 }
         },
 
@@ -211,7 +217,7 @@ export default {
                         await this.dongBo(maSoBhxh);
                     }
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
                 }
             }
         },
@@ -229,38 +235,6 @@ export default {
             this.key = await this.fetchUserGhiChu();
         }
 
-    },
-    async created(){
-
-        this.getAuth();
-        
-        if (this.$route.query.q) {
-            const q = this.$route.query.q;
-            this.searchText = q;
-            this.timKiem(q);
-        }
-        // else
-        // this.getTaiTuc();
-    },
-    filters: {
-        ngayThang: function (value) {
-            if (!value) return ''          
-            return new Date(value).toLocaleDateString();
-        },
-        namSinh: function (value) {
-            if (!value) return ''          
-            return new Date(value).toLocaleDateString();
-        },
-        ngayThangString: function (value) {
-            if (!value) return ''
-            if(isNaN(value)) return ''
-            return new Date([value.substr(0,4),value.substr(4,2),value.substr(6,2)].join("-")).toLocaleDateString();;
-        },
-        soNgay(value){
-            if (!value) return ''
-            const diffTime = (new Date(value) - new Date());
-            return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
-        }
     }
 }
 </script>

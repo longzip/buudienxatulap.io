@@ -224,7 +224,7 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
               <p class="mb-2">
                 <select v-model="mucThuNhap">
                   <option disabled value="">Lựa chọn mức thu nhập 👇</option>
-                  <option v-for="option in options" :value="option" :key="option">
+                  <option v-for="option in options" :key="option" :value="option">
                     {{ (option*0.22-33000).toLocaleString() }}/{{ option.toLocaleString() }} VNĐ
                   </option>
                 </select>
@@ -298,7 +298,7 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
               <p>
                 <select v-model="mucThuNhap">
                   <option disabled value="">Lựa chọn mức thu nhập</option>
-                  <option v-for="option in options" :value="option" :key="option">
+                  <option v-for="option in options" :key="option" :value="option">
                     {{ option.toLocaleString() }} VNĐ
                   </option>
                 </select> 
@@ -364,13 +364,6 @@ export default {
       options: [1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 5500000, 6000000, 6500000, 7000000, 8000000, 9000000, 10000000, 12000000, 15000000, 25000000]
     }
   },
-  methods: {
-    tongNamThu(namThu){
-      return [...Array(namThu).keys()].map(i => 
-        Math.round(this.mucThuNhap*1.475*this.tiLeHuong*Math.pow(1.07,i)*12)
-        ).reduce((partialSum, a) => partialSum + a, 0)
-    }
-  },
   computed: {
     tongSoTienGoc(){
       return Math.round((this.mucThuNhap*0.22-this.mucHoTro)*12*20)
@@ -400,6 +393,13 @@ export default {
         luong: Math.round(this.mucThuNhap*1.475*this.tiLeHuong*Math.pow(1.07,namThu))
         }))
     },
+  },
+  methods: {
+    tongNamThu(namThu){
+      return [...Array(namThu).keys()].map(i => 
+        Math.round(this.mucThuNhap*1.475*this.tiLeHuong*Math.pow(1.07,i)*12)
+        ).reduce((partialSum, a) => partialSum + a, 0)
+    }
   }
 }
 </script>

@@ -24,10 +24,10 @@
         <div class="w-full lg:w-6/12 px-4">
           <h4 class="text-3xl font-semibold">Cảm ơn bạn đã ghé thăm!</h4>
           <h5 class="text-lg mt-0 mb-2 text-gray-700">
-            Yêu mọi người quá. Có câu hỏi gì cần cứ biểu ạ, Hồ Thị Thắm sẽ trả lời hết nha!
+            Yêu mọi người quá. Có câu hỏi gì cần cứ biểu ạ, 😍 Hồ Thị Thắm 😍 sẽ trả lời hết nha!
           </h5>
           <div class="zalo-follow-only-button" data-oaid="907870636305349915"></div>
-          <div class="mt-6">
+          <div class="mt-6 mb-12">
             <a target="_blank" href="https://youtube.com/channel/UC8skczWH9dMoyzU0LPYQ4yA?sub_confirmation=1"
               class="bg-white text-red-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
             >
@@ -111,7 +111,8 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/tra-cuu-hang-buu-dien/"
+                    href="http://www.vnpost.vn/vi-vn/dinh-vi/buu-pham"
+                    target="_blank"
                     >Tra cứu hàng bưu điện</a
                   >
                 </li>
@@ -125,22 +126,30 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                    href="/gia-han-the-bhyt-tai-nha/"
+                    >Tra cứu mức đóng BHYT</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
                     href="http://hanoi.vnpost.vn/"
                     >Bưu điện Hà Nội</a
                   >
                 </li>
+                
                 <li>
                   <a
-                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                    class="mt-3 text-red-700 hover:text-red-900 font-semibold block pb-2 text-2xl"
                     href="tel:0978333963"
-                    >Liên hệ</a
+                    >☎️0978333963</a
                   >
                 </li>
                 <li>
                   <a
-                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/gia-han-the-bhyt-tai-nha/"
-                    >Tra cứu mức đóng BHYT</a
+                    class="text-red-700 hover:text-red-900 font-semibold block pb-2 text-2xl"
+                    href="/ho-thi-tham/"
+                    >👉Hồ Thị Thắm</a
                   >
                 </li>
               </ul>
@@ -157,7 +166,7 @@
             Copyright © {{date}} Bưu điện văn hóa xã Tự Lập. Thiết kế website hiện đại cùng
             <a
               href="https://lovanlong.ga/"
-              class="text-yellow-500 hover:text-yellow-800"
+              class="text-yellow-700 hover:text-yellow-900"
               >Lỗ Văn Long</a
             >.
           </div>

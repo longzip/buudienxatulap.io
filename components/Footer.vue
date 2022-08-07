@@ -51,8 +51,8 @@
           </div>
         </div>
         <div class="w-full lg:w-6/12 px-4">
-          <div class="flex flex-wrap items-top mb-6">
-            <div class="w-full lg:w-4/12 px-4 ml-auto">
+          <div class="flex flex-wrap items-top mb-2">
+            <div class="w-full lg:w-4/12 px-4 ml-auto mb-6">
               <span
                 class="block uppercase text-gray-600 text-sm font-semibold mb-2"
                 >Về bưu điện xã Tự Lập</span

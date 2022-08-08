@@ -47,26 +47,26 @@
               ><span class="lg:hidden inline-block ml-2">Facebook</span></a
             >
           </li>
-          <!-- <li class="flex items-center">
+          <li class="flex items-center">
             <a
               class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="#pablo"
+              href="https://www.instagram.com/thambuudien/"
               ><i
-                class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg "
+                class="lg:text-gray-300 text-gray-500 fab fa-instagram text-lg leading-lg "
               ></i
-              ><span class="lg:hidden inline-block ml-2">Tweet</span></a
+              ><span class="lg:hidden inline-block ml-2">Instagram</span></a
             >
-          </li> -->
-          <!-- <li class="flex items-center">
+          </li>
+          <li class="flex items-center">
             <a
               class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="#pablo"
+              href="https://www.tiktok.com/@hothitham1986"
               ><i
-                class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg "
+                class="lg:text-gray-300 text-gray-500 fab fa-tiktok text-lg leading-lg "
               ></i
-              ><span class="lg:hidden inline-block ml-2">Star</span></a
+              ><span class="lg:hidden inline-block ml-2">Tiktok</span></a
             >
-          </li> -->
+          </li>
           <li class="flex items-center">
             <a target="_blank" href="https://blog.thambuudien.ga/"
               class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"

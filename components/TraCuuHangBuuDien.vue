@@ -19,7 +19,7 @@
                     </div>
             </div>
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <div v-if="itemCode.TBL_INFO">
+                <div v-if="itemCode">
                     <p class="text-gray-500 text-xl mt-10">
                         Người gửi: {{itemCode.TBL_INFO.HO_TEN_GUI}}
                     </p>  

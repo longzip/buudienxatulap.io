@@ -2,7 +2,7 @@
     <section class="relative py-20">
         <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
-            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
 
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Họ và tên hoặc mã số BHXH, BHYT:
@@ -18,7 +18,7 @@
                     </a>
                     </div>
             </div>
-            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
                 <div v-if="dsBhyts.length">
                     <ul v-for="bhyt in dsBhyts" :key="bhyt.maSoBhxh"  class="divide-y divide-gray-200 dark:divide-gray-700 mt-10">
                         <li :class="[bhyt.coTheUuTienCaoHon ? 'bg-yellow-100 border-yellow-500': isConHan(bhyt.denNgayDt) ? 'bg-green-100 border-green-500' : 'bg-gray-100 border-gray-500','py-3 sm:py-4 border-t-4 rounded mb-5 shadow']">
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
                                     <div>{{ bhyt.denNgayDt | soNgay}}</div>
-                                    <a v-if="!isConHan(bhyt.denNgayDt)" target="_blank" :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
+                                    <a v-if="!isConHan(bhyt.denNgayDt)" target="_blank" :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Chi tiết</a>
                                 </div>
                             </div>
                         </li>

@@ -1,0 +1,105 @@
+<template>
+    <section class="relative py-20">
+        <div class="container mx-auto px-4">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Mã bưu gửi
+                </label>
+                <input id="grid-first-name" v-model="searchText" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Ví dụ: EB156283795VN" @keydown.enter="timKiem(searchText)">
+                <p class="text-red-500 text-xs italic mb-5">Khi gửi hàng tại Bưu điện xã Tự Lập chúng tôi sẽ in cho bạn phiếu có mã vận đơn. Bạn hãy nhập vào đây và bấm tra cứu.</p>
+                <div class="flex items-center justify-between ">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" @click="timKiem()">
+                        Tra cứu
+                    </button>
+                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="tel:0978333963">
+                        Bạn cần trợ giúp?
+                    </a>
+                    </div>
+            </div>
+            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+                <div v-if="itemCode">                  
+                    <ol class="pt-12 relative border-l border-gray-200 dark:border-gray-700">               
+                        <li v-for="({NGAY_TRANG_THAI,VI_TRI,TRANG_THAI},i) in  itemCode.List_TBL_DINH_VI" :key="i" class="mb-10 ml-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{NGAY_TRANG_THAI}}</time>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{VI_TRI}}</h3>
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{{TRANG_THAI}}</p>
+                            <!-- <a href="tel:0978333963" class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">{{DIEN_THOAI}} <svg class="ml-2 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></a> -->
+                        </li>
+                    </ol>
+
+                    <p class="text-center text-gray-500 text-xs mt-10">
+                        &copy;2022 bởi <a href="https://lovanlong.ga">Lỗ Văn Long</a>.
+                    </p>
+                </div>
+                <div v-else>
+                    <p class="text-center text-yellow-500 text-2xl pt-16">
+                        Để được hỗ trợ thêm hãy tham gia nhóm Zalo Hỗ Trợ khách hàng bưu điện xã Tự Lập tại <a href="https://zalo.me/g/sdnmvi859">zalo.me/g/sdnmvi859</a>
+                    </p>
+                </div>
+                
+                </div>
+           
+          </div>
+        </div>
+      </section>
+</template>
+<script>
+export default {
+    filters: {
+        ngayThang (value) {
+            if (!value) return ''          
+            return new Date(value).toLocaleDateString();
+        },
+        namSinh (value) {
+            if (!value) return ''          
+            return new Date(value).toLocaleDateString();
+        },
+        ngayThangString (value) {
+            if (!value) return ''
+            if(isNaN(value)) return ''
+            return new Date([value.substr(0,4),value.substr(4,2),value.substr(6,2)].join("-")).toLocaleDateString();;
+        },
+        soNgay(value){
+            if (!value) return ''
+            const diffTime = (new Date(value) - new Date());
+            return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
+        }
+    },
+    data() {
+       return {
+           searchText: "",
+            itemCode: {},
+            key: ''
+       } 
+    },
+    created(){    
+        if (this.$route.query.q) {
+            const q = this.$route.query.q;
+            this.searchText = q;
+            this.timKiem(q);
+        }
+    },
+    methods:{
+        async fetchAPIByName(searchText){
+            const API_URL = `https://api.myems.vn/TrackAndTraceItemCode?itemcode=${searchText}&language=0`;
+            const res = await fetch(API_URL, {
+                method: 'GET'
+            })
+
+            const json = await res.json()
+            if (json.errors) {
+                throw new Error('Failed to fetch API')
+            }
+            
+            return json;
+        },
+
+        async timKiem(searchText){
+            this.itemCode = await this.fetchAPIByName(searchText);
+        }
+    }
+}
+</script>

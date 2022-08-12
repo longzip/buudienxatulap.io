@@ -111,7 +111,7 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="http://www.vnpost.vn/vi-vn/dinh-vi/buu-pham"
+                    href="/tra-cuu-hang-buu-dien/"
                     target="_blank"
                     >Tra cứu hàng bưu điện</a
                   >

@@ -19,7 +19,7 @@
                     </div>
             </div>
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <div v-if="itemCode">
+                <div v-if="itemCode && itemCode.TBL_INFO">
                     <p class="text-gray-500 text-xl mt-10">
                         Người gửi: {{itemCode.TBL_INFO.HO_TEN_GUI}}
                     </p>  
@@ -66,31 +66,10 @@
 </template>
 <script>
 export default {
-    filters: {
-        ngayThang (value) {
-            if (!value) return ''          
-            return new Date(value).toLocaleDateString();
-        },
-        namSinh (value) {
-            if (!value) return ''          
-            return new Date(value).toLocaleDateString();
-        },
-        ngayThangString (value) {
-            if (!value) return ''
-            if(isNaN(value)) return ''
-            return new Date([value.substr(0,4),value.substr(4,2),value.substr(6,2)].join("-")).toLocaleDateString();;
-        },
-        soNgay(value){
-            if (!value) return ''
-            const diffTime = (new Date(value) - new Date());
-            return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
-        }
-    },
     data() {
        return {
            searchText: "",
             itemCode: {},
-            key: ''
        } 
     },
     created(){    
@@ -117,7 +96,12 @@ export default {
 
         async timKiem(searchText){
             this.itemCode = {};
+            // this.TBL_INFO = {};
+
             this.itemCode = await this.fetchAPIByName(searchText);
+            // const TBL_INFO = kq;
+            // this.TBL_INFO = TBL_INFO;
+            // this.itemCode =kq;
         }
     }
 }

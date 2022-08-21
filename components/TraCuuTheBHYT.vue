@@ -1,6 +1,6 @@
 <template>
     <section class="relative py-20">
-        <div class="container">
+        <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
 

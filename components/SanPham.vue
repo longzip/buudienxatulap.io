@@ -59,7 +59,7 @@
               <div class="px-6">
                 <img
                   alt="Cách gửi hàng bưu điện thu tiền hộ"
-                  src="/images/gui-hang-qua-buu-dien.jpg"
+                  src="../assets/img/ho-thi-tham-800x800.png"
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px;"
                 />

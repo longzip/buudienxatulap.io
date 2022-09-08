@@ -17,6 +17,7 @@
               <div class="px-6">
                 <nuxt-img
                   format="webp"
+                   loading="lazy"
                   alt="Đóng bảo hiểm xã hội tự nguyện"
                   src="/images/bao-hiem-xa-hoi.jpg"
                   class="shadow-lg rounded-full max-w-full mx-auto"
@@ -38,6 +39,7 @@
               <div class="px-6">
                 <nuxt-img
                   format="webp"
+                   loading="lazy"
                   alt="Mua bảo hiểm ô tô xe máy"
                   src="/images/bao-hiem-xe-may-sale-50k.jpg"
                   class="shadow-lg rounded-full max-w-full mx-auto"
@@ -61,6 +63,7 @@
               <div class="px-6">
                 <nuxt-img
                   format="webp"
+                   loading="lazy"
                   alt="Cách gửi hàng bưu điện thu tiền hộ"
                   src="/images/ho-thi-tham-800x800.png"
                   class="shadow-lg rounded-full max-w-full mx-auto"
@@ -81,6 +84,7 @@
               <div class="px-6">
                 <nuxt-img
                   format="webp"
+                   loading="lazy"
                   alt="Vay tiền mặt tại bưu điện"
                   src="/images/vay-tien-mat-qua-buu-dien.jpg"
                   class="shadow-lg rounded-full max-w-full mx-auto"

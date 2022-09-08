@@ -43,6 +43,7 @@
                   <div class="relative">
                     <nuxt-img
                       format="webp"
+                       loading="lazy"
                       alt="Thắm Bưu Điện"
                       src="/images/ho-thi-tham-800x800.png"
                       class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"

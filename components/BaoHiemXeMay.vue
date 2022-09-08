@@ -129,6 +129,7 @@
               >
                 <nuxt-img
                   format="webp"
+                   loading="lazy"
                   alt="Hồ Thị Thắm ở Bưu điện văn hóa xã Tự Lập"
                   src="/images/buu-dien-van-hoa-xa-tu-lap-ho-thi-tham.jpg"
                   class="w-full align-middle rounded-t-lg"

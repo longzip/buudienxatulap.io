@@ -94,6 +94,7 @@
               >
                 <nuxt-img
                   format="webp"
+                   loading="lazy"
                   alt="Bưu điện xã Tự Lập - Hồ Thị Thắm"
                   src="/images/buu-dien-van-hoa-xa-tu-lap-ho-thi-tham.jpg"
                   class="w-full align-middle rounded-t-lg"

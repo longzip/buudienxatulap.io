@@ -4,7 +4,7 @@
         style="min-height: 75vh;"
       >
         <div
-          class="absolute top-0 w-full h-full bg-center bg-cover" :style="`background-image: url('${bg ? bg : '/images/chi-tra-luong-huu.png'}');`"
+          class="absolute top-0 w-full h-full bg-center bg-cover" :style="`background-image: url('${bg ? bg : '/images/chi-tra-luong-huu-web.png'}');`"
         > 
           <span
             id="blackOverlay"

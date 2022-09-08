@@ -6,6 +6,11 @@
       <SanPham />
       <ThongBao />
       <GuiYeuCau />
+      <!-- <nuxt-img
+          format="webp"
+          src="images/chi-tra-luong-huu.png"
+          quality="80"
+       /> -->
     </main>
 </template>
 <script>

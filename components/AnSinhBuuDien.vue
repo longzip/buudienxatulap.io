@@ -25,6 +25,7 @@
               <nuxt-img
                   format="webp"
                    loading="lazy"
+                   quality="80" width="600"
                 alt="Bảo hiểm bưu điện PTI"
                 class="max-w-full rounded-lg shadow-lg"
                 src="/images/bao-hiem-buu-dien-pti.jpg"

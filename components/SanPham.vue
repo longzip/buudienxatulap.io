@@ -15,7 +15,8 @@
           <div class="flex flex-wrap">
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
+                <nuxt-img
+                  format="webp"
                   alt="Đóng bảo hiểm xã hội tự nguyện"
                   src="/images/bao-hiem-xa-hoi.jpg"
                   class="shadow-lg rounded-full max-w-full mx-auto"
@@ -35,7 +36,8 @@
               <!-- Bảo hiểm bắt buộc ô tô, xe máy: quyền lợi vượt trội phí mua -->
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
+                <nuxt-img
+                  format="webp"
                   alt="Mua bảo hiểm ô tô xe máy"
                   src="/images/bao-hiem-xe-may-sale-50k.jpg"
                   class="shadow-lg rounded-full max-w-full mx-auto"
@@ -57,9 +59,10 @@
             <!-- jskdfjkdj -->
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
+                <nuxt-img
+                  format="webp"
                   alt="Cách gửi hàng bưu điện thu tiền hộ"
-                  src="../assets/img/ho-thi-tham-800x800.png"
+                  src="/images/ho-thi-tham-800x800.png"
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px;"
                 />
@@ -76,7 +79,8 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
+                <nuxt-img
+                  format="webp"
                   alt="Vay tiền mặt tại bưu điện"
                   src="/images/vay-tien-mat-qua-buu-dien.jpg"
                   class="shadow-lg rounded-full max-w-full mx-auto"

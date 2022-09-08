@@ -55,3 +55,58 @@
       </section>
     </main>
 </template>
+<script>
+export default {
+  head: {
+    title: 'Tra cứu hàng gửi bưu điện - Hồ Thị Thắm',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Chỉ cần nhập mã vận đơn của bưu gửi bạn tra cứu được chính xác thông tin định vị bưu gửi.'
+      },
+      {
+            hid: 'og:title',
+            property: 'og:title',
+            content: 'Tra cứu hàng gửi bưu điện | Hồ Thị Thắm'
+          },
+          {
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Khi bạn đến gửi hàng nhớ giữ lại mã vận đơn và nhập vào ô tra cứu để kiểm tra thông tin định vị của bưu gửi và các thông tin phát hàng.'
+          },
+          {
+            hid: 'og:type',
+            property: 'og:type',
+            content: 'article',
+          },
+          {
+            hid: 'og:site_name',
+            property: 'og:type',
+            content: 'Hồ Thị Thắm',
+          },
+          {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://www.hotham.vn/images/ho-thi-tham-o-buu-dien-xa-tu-lap.jpg'
+          },
+          {
+            hid: 'og:url',
+            property: 'og:url',
+            content: 'https://www.hotham.vn/tra-cuu-hang-buu-dien/'
+          },
+          {
+            property: 'og:locale',
+            content: 'vi_VN'
+          }
+    ],
+    link: [
+          {
+            hid: 'canonical',
+            rel: 'canonical',
+            href: 'https://www.hotham.vn/tra-cuu-hang-buu-dien/'
+          }
+    ]
+  }
+}
+</script>

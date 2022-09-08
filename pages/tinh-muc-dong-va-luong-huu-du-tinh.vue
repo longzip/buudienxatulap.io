@@ -207,6 +207,57 @@ export default {
       options: [1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 5500000, 6000000, 6500000, 7000000, 8000000, 9000000, 10000000, 12000000, 15000000, 25000000]
     }
   },
+  head: {
+    title: 'Tính mức đóng BHXH tự nguyện và lương hưu dự tính - Hồ Thị Thắm',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Truy cập ngay để tính mức lương hưu khi tham gia BHXH tự nguyện. Chỉ cần chọn mức thu nhập lựa chọn bạn kiểm tra ngay được mức đóng và lương hưu chính xác nhất.'
+      },
+      {
+            hid: 'og:title',
+            property: 'og:title',
+            content: 'Tính mức đóng BHXH tự nguyện và lương hưu dự tính | Hồ Thị Thắm'
+          },
+          {
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Truy cập ngay để tính mức lương hưu khi tham gia BHXH tự nguyện. Chỉ cần chọn mức thu nhập lựa chọn bạn kiểm tra ngay được mức đóng và lương hưu chính xác nhất.'
+          },
+          {
+            hid: 'og:type',
+            property: 'og:type',
+            content: 'article',
+          },
+          {
+            hid: 'og:site_name',
+            property: 'og:type',
+            content: 'Hồ Thị Thắm',
+          },
+          {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://www.hotham.vn/images/ho-thi-tham-o-buu-dien-xa-tu-lap.jpg'
+          },
+          {
+            hid: 'og:url',
+            property: 'og:url',
+            content: 'https://www.hotham.vn/tinh-muc-dong-va-luong-huu-du-tinh/'
+          },
+          {
+            property: 'og:locale',
+            content: 'vi_VN'
+          }
+    ],
+    link: [
+          {
+            hid: 'canonical',
+            rel: 'canonical',
+            href: 'https://www.hotham.vn/tinh-muc-dong-va-luong-huu-du-tinh/'
+          }
+    ]
+  },
   computed: {
     tongSoTienGoc(){
       return Math.round((this.mucThuNhap*0.22-this.mucHoTro)*12*20)

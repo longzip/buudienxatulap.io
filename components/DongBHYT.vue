@@ -92,8 +92,9 @@
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blue-600"
               >
-                <img
-                  alt="..."
+                <nuxt-img
+                  format="webp"
+                  alt="Bưu điện xã Tự Lập - Hồ Thị Thắm"
                   src="/images/buu-dien-van-hoa-xa-tu-lap-ho-thi-tham.jpg"
                   class="w-full align-middle rounded-t-lg"
                 />

@@ -22,8 +22,9 @@
         <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-              <img
-                alt="..."
+              <nuxt-img
+                  format="webp"
+                alt="Bảo hiểm bưu điện PTI"
                 class="max-w-full rounded-lg shadow-lg"
                 src="/images/bao-hiem-buu-dien-pti.jpg"
               />

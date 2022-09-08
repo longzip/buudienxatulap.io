@@ -41,9 +41,10 @@
                   class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center"
                 >
                   <div class="relative">
-                    <img
-                      alt="..."
-                      src="../assets/img/ho-thi-tham-800x800.png"
+                    <nuxt-img
+                      format="webp"
+                      alt="Thắm Bưu Điện"
+                      src="/images/ho-thi-tham-800x800.png"
                       class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
                       style="max-width: 150px;"
                     />
@@ -96,3 +97,58 @@
     </main>
 </template>
 
+<script>
+export default {
+  head: {
+    title: 'Thắm Bưu Điện - Hồ Thị Thắm',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Xin chào, mình là Hồ Thị Thắm làm cấp đổi thẻ BHYT hết hạn, thu BHXH tự nguyện ở BĐ xã Tự Lập.'
+      },
+      {
+            hid: 'og:title',
+            property: 'og:title',
+            content: 'Thắm Bưu Điện | Hồ Thị Thắm'
+          },
+          {
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Xin chào, mình là Hồ Thị Thắm làm cấp đổi thẻ BHYT hết hạn, thu BHXH tự nguyện ở BĐ xã Tự Lập. XEM NGAY!'
+          },
+          {
+            hid: 'og:type',
+            property: 'og:type',
+            content: 'article',
+          },
+          {
+            hid: 'og:site_name',
+            property: 'og:type',
+            content: 'Hồ Thị Thắm',
+          },
+          {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://www.hotham.vn/images/ho-thi-tham-o-buu-dien-xa-tu-lap.jpg'
+          },
+          {
+            hid: 'og:url',
+            property: 'og:url',
+            content: 'https://www.hotham.vn/ho-thi-tham/'
+          },
+          {
+            property: 'og:locale',
+            content: 'vi_VN'
+          }
+    ],
+    link: [
+          {
+            hid: 'canonical',
+            rel: 'canonical',
+            href: 'https://www.hotham.vn/ho-thi-tham/'
+          }
+    ]
+  }
+}
+</script>

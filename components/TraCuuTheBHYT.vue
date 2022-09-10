@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
                                     <div>{{ bhyt.denNgayDt | soNgay}}</div>
-                                    <a v-if="!isConHan(bhyt.denNgayDt)" target="_blank" :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Chi tiết</a>
+                                    <a :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">{{!isConHan(bhyt.denNgayDt) ? "Mua ngay" : "Chi tiết"}}</a>
                                 </div>
                             </div>
                         </li>

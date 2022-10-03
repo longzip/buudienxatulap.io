@@ -43,6 +43,12 @@
                                     <p class="text-sm text-gray-500 dark:text-gray-400">
                                         Ngày 5 năm liên tục: {{bhyt.ngay5Nam | ngayThangString}}
                                     </p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        Ngày gia hạn gần nhất: {{bhyt.ngayLap | ngayThangString}}
+                                    </p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        <strong>Số tiền đã nộp: {{bhyt.tongTien}}</strong>
+                                    </p>
                                 </div>
                                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
                                     <div>{{ bhyt.denNgayDt | soNgay}}</div>

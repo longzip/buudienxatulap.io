@@ -17,6 +17,7 @@
                 <h1 class="text-white font-semibold text-5xl">
                   Tra cứu thẻ BHYT hết hạn ở xã Tự Lập.
                 </h1>
+                <p class="mt-4 text-lg text-gray-300">Để gia hạn thẻ BHYT hết hạn, bạn chỉ cần đến Đại lý thu bảo hiểm xã hội, bảo hiểm y tế Bưu điện xã Tự Lập gặp chị Hồ Thị Thắm 0978333963 (thay anh Lập đã nghỉ).</p>
               </div>
             </div>
           </div>

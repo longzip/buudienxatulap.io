@@ -130,7 +130,7 @@
       <section class="pt-20 pb-48">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap justify-center text-center mb-24">
-            <div class="w-full lg:w-6/12 px-4">
+            <div class="w-4/5 lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold">Hưởng lương hưu sau 20 năm</h2>
               <p class="text-lg leading-relaxed m-4 text-gray-600">
               Bảng dự tính  
@@ -148,7 +148,7 @@
             </div>
           </div>
           <div class="flex flex-wrap">
-            <div v-for="item in luongHuu20Nam" :key="item.namThu" class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+            <div v-for="item in luongHuu20Nam" :key="item.namThu" class="w-4/5 md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
                 <div :class="[tongDong20<tongNamThu(item.namThu) ? 'border-indigo-500':'border-gray-500', 'w-72 mx-auto bg-white border-t-4 rounded dark:bg-gray-800 shadow text-center p-4']">
                     <div class="overflow-hidden">

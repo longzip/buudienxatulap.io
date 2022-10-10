@@ -190,6 +190,27 @@ export default {
             return json
         },
 
+        async getAllBHYTbyName(name){
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+
+            const API_URL = `https://cms.buudienhuyenmelinh.vn/api/bhyts?name=${name}`;
+
+            const res = await fetch(API_URL, {
+                method: 'GET',
+                headers
+            })
+
+            const json = await res.json()
+            if (json.errors) {
+                // console.error(json.errors)
+                throw new Error('Failed to fetch API')
+            }
+
+            this.dsBhyts = [...json];
+        },
+
         async dongBo(maSoBhxh){
             try {
                     const {thongTinTK1, thongTinTheHGD, trangThaiThe} = await this.fetchAPIByMaSoBhxh(maSoBhxh);
@@ -201,7 +222,9 @@ export default {
                         const bhyt = await this.save(theBHYT)
                         this.dsBhyts.push(bhyt);
                     }
+                    
                 } catch (error) {
+                    await this.getAllBHYTbyName(maSoBhxh);
                 }
         },
 
@@ -223,7 +246,7 @@ export default {
                         await this.dongBo(maSoBhxh);
                     }
                 } catch (error) {
-                    // console.log(error);
+                    await this.getAllBHYTbyName(name)
                 }
             }
         },

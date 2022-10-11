@@ -312,7 +312,7 @@ export default {
             for (let index = 0; index < theBHYTs.length; index++) {
                 const bhyt = theBHYTs[index];
                 const diffTime = (new Date(bhyt.denNgayDt) - new Date());
-                if(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) < 90){
+                if(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) < 31){
                     const soNguoiThamGia = this.dsBhyts.filter(item=> (item.tongTien || (new Date(item.tuNgayDt).toISOString().slice(0,4) === '2022' && item.soTheBhyt.slice(0,2) === 'GD'))).length;
                     const thu = soNguoiThamGia < 5 ? soNguoiThamGia + 1 : 5
                     bhyt.tongTien = this.mucDong[thu]
@@ -334,7 +334,7 @@ export default {
         isConHan(value){
             if(!value) return false;
             const diffTime = (new Date(value) - new Date());
-            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 90;
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 31;
         },
         remove(maSoBhxh){
             this.dsBhyts = this.dsBhyts.filter(i => i.maSoBhxh !== maSoBhxh)

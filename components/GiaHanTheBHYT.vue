@@ -148,7 +148,7 @@ export default {
         },
         soNgay(value){
             if (!value.denNgayDt) return ''
-            if(value.coTheUuTienCaoHon=== true || value.coTheUuTienCaoHon === '1') return 'Có thẻ ưu tiên'
+            if(value.coTheUuTienCaoHon === '1' || value.coTheUuTienCaoHon === true) return 'Có thẻ ưu tiên'
             const diffTime = (new Date(value.denNgayDt) - new Date());
             return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
         },

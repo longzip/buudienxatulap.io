@@ -29,36 +29,35 @@
                                         {{bhyt.ngaySinhDt | namSinh}}
                                     </p>
                                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Số thẻ BHYT: {{bhyt.soTheBhyt}}
+                                        Số thẻ BHYT: <strong>{{bhyt.soTheBhyt}}</strong>
                                     </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Nơi KCB: {{bhyt.maKCB}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Từ ngày: {{bhyt.tuNgayDt | ngayThang}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400 text-xl">
-                                        Đến ngày: {{bhyt.denNgayDt | ngayThang}}
-                                    </p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    <p class="text-xl text-blue-600 text-gray-500 dark:text-gray-400">
                                         Ngày 5 năm liên tục: {{bhyt.ngay5Nam | ngayThangString}}
                                     </p>
                                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        Ngày gia hạn gần nhất: {{bhyt.ngayLap | ngayThangString}}
+                                        Nơi KCB: <em>{{bhyt.maKCB}}</em>
                                     </p>
                                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                                        <strong>Số tiền đã nộp: {{bhyt.tongTien}}</strong>
+                                        Hạn thẻ: {{bhyt.tuNgayDt | ngayThang}} - {{bhyt.denNgayDt | ngayThang}}
+                                    </p>
+                                    
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        Gia hạn: <strong>{{bhyt.ngayLap}} - <strong>đ{{parseInt(bhyt.tongTien).toLocaleString()}}</strong></strong>
                                     </p>
                                 </div>
-                                <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
+                                <div class="flex flex-col justify-center w-full space-y-6 text-center text-base font-semibold text-gray-900 dark:text-white md:flex-row md:space-y-0 md:space-x-4">
+                                    <a :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded">{{!isConHan(bhyt.denNgayDt) ? "Mua ngay" : "Chi tiết"}}</a>
                                     <div>{{ bhyt.denNgayDt | soNgay}}</div>
-                                    <a :href="`/gia-han-the-bhyt-tai-nha?maHoGD=${bhyt.maHoGd}&q=${bhyt.maSoBhxh}`" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">{{!isConHan(bhyt.denNgayDt) ? "Mua ngay" : "Chi tiết"}}</a>
                                 </div>
+                                
                             </div>
                         </li>
                     </ul>
                     <p class="text-center text-gray-500 text-xs mt-10">
-                        &copy;2022 bởi <a href="https://lovanlong.ga">Lỗ Văn Long</a>.
+                        &copy;2022 bởi <a class="text-blue-600" href="https://lovanlong.ga">Lỗ Văn Long</a>.
+                    </p>
+                    <p class="text-center text-red-500 text-xl mt-10">
+                        Để gia hạn thẻ BHYT hết hạn, bạn chỉ cần đến Đại lý thu bảo hiểm xã hội, bảo hiểm y tế Bưu điện xã Tự Lập gặp chị Hồ Thị Thắm 0978333963 (thay anh Lập đã nghỉ).  Trong trường hợp bạn không có điều kiện trực tiếp tới Bưu điện xã Tự Lập, bạn có thể đóng tiền gia hạn thẻ BHYT trực tuyến <a class="text-blue-600" href="/gia-han-the-bhyt-tai-nha/">tại đây</a>.
                     </p>
                 </div>
                 <div v-else>

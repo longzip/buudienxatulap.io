@@ -49,7 +49,7 @@
                     </ol>
 
                     <p class="text-center text-gray-500 text-xs mt-10">
-                        &copy;2022 bởi <a href="https://lovanlong.ga">Lỗ Văn Long</a>.
+                        &copy;2022 bởi <a class="text-blue-500 hover:text-blue-800" href="https://lovanlong.ga">Lỗ Văn Long</a>.
                     </p>
                 </div>
                 <div v-else>

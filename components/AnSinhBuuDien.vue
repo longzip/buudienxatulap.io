@@ -72,6 +72,11 @@
                     </div>
                   </li>
                 </ul>
+                <a
+                href="https://www.hotham.shop/cua-hang/an-sinh-buu-dien-bao-hiem-tai-nan-ho-gia-dinh/"
+                class="block mt-5 font-bold text-gray-800"
+                >Đăng ký ngay</a
+              >
               </div>
             </div>
           </div>

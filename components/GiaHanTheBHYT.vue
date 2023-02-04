@@ -261,6 +261,7 @@ export default {
         .filter(
           (t) =>
             t.tongTien &&
+            (t.coTheUuTienCaoHon !== '1' || t.coTheUuTienCaoHon !== true) &&
             (t.soTheBhyt.slice(0, 2) !== 'GD' ||
               new Date(t.tuNgayDt).toISOString().slice(0, 4) !== '2023')
         )

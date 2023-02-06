@@ -74,7 +74,7 @@ export default {
         hid: 'og:title',
         property: 'og:title',
         content:
-          'Tra cứu thẻ bảo hiểm y tế hết hạn ở BĐ xã Tự Lập | Hồ Thị Thắm',
+          'Tra cứu mã số thẻ bảo hiểm y tế, thời hạn, thời điểm 5 năm liên tục | Hồ Thị Thắm',
       },
       {
         hid: 'og:description',

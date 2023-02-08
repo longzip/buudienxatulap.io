@@ -14,7 +14,7 @@
             v-model="searchText"
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text"
-            placeholder="Tên"
+            placeholder="Họ và tên (đầy đủ)"
             @keydown.enter="timKiem()"
           />
           <p class="text-red-500 text-xs italic mb-5">

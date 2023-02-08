@@ -60,8 +60,8 @@
               <h6 class="text-xl font-semibold">Điểm thu tiền điện</h6>
               <p class="mt-2 mb-4 text-gray-600">
                 Lịch thu hộ tiền điện ở BĐ xã Tự Lập vào các buổi sáng Từ ngày
-                13 hàng tháng (Lưu ý: Để nộp tiền tất toán trong ngày chúng tôi
-                chỉ thu hộ tiền điện trong buổi sáng).
+                13 hằng tháng (Lưu ý: Để nộp tiền tất toán trong ngày chúng tôi
+                <em>chỉ thu hộ tiền điện trong buổi sáng</em> ).
               </p>
             </div>
           </div>
@@ -90,11 +90,10 @@
                 </svg>
               </div>
               <h6 class="text-xl font-semibold">
-                Thanh toán tiền điện trực tiếp
+                Điểm bán Bảo Hiểm Ô Tô - Xe Máy
               </h6>
               <p class="mt-2 mb-4 text-gray-600">
-                Địa điểm: <strong>Bưu điện văn hóa xã Tự Lập</strong>. Thời gian
-                thu hàng tháng: Từ ngày 16 đến ngày 21 hàng tháng.
+                Tiết kiệm lên đến 50% khi mua Bảo Hiểm Ô Tô - Xe Máy PTI.
               </p>
             </div>
           </div>

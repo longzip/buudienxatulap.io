@@ -315,7 +315,7 @@ export default {
         throw new Error('Failed to fetch API')
       }
 
-      this.dsBhyts = [...json]
+      return [...json]
     },
 
     async dongBo(maSoBhxh) {
@@ -362,14 +362,14 @@ export default {
     },
     async timKiemHoGd(maHoGd) {
       this.dsBhyts = []
+      const dsBhyts = await this.getAllBHYTbyHoGd(maHoGd)
       try {
-        const dsBhyts = await this.getAllBHYTbyHoGd(maHoGd)
         for (let index = 0; index < dsBhyts.length; index++) {
           const { maSoBhxh } = dsBhyts[index]
           await this.dongBo(maSoBhxh)
         }
       } catch (error) {
-        await this.getAllBHYTbyHoGd(maHoGd)
+        this.dsBhyts = dsBhyts
       }
     },
 

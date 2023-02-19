@@ -66,6 +66,9 @@
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                       Số thẻ BHYT: <strong>{{ bhyt.soTheBhyt }}</strong>
+                      <span class="text-xl"
+                        >({{ bhyt.denNgayDt | soNgay }})</span
+                      >
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                       Sử dụng từ ngày: {{ bhyt.tuNgayDt | ngayThang }}
@@ -73,9 +76,6 @@
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                       đến ngày
                       <strong>{{ bhyt.denNgayDt | ngayThang }}</strong>
-                      <span class="text-2xl"
-                        >({{ bhyt.denNgayDt | soNgay }})</span
-                      >
                     </p>
                     <p class="text-xl text-blue-600 dark:text-gray-400">
                       Ngày 5 năm liên tục: {{ bhyt.ngay5Nam | ngayThangString }}
@@ -201,8 +201,8 @@ export default {
         Authorization: `Bearer ${this.key}`,
       }
 
-      // const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuMaSoBHXH?maTinh=01&maHuyen=250&maXa=08986&hoTen=${searchText}&isCoDau=true&`
-      const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuMaSoBHXH?maTinh=01&maHuyen=250&maXa=null&hoTen=${searchText}&isCoDau=true&`
+      const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuMaSoBHXH?maTinh=01&maHuyen=250&maXa=08986&hoTen=${searchText}&isCoDau=true&`
+      // const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuMaSoBHXH?maTinh=01&maHuyen=250&maXa=null&hoTen=${searchText}&isCoDau=true&`
 
       const res = await fetch(API_URL, {
         method: 'GET',

@@ -182,7 +182,7 @@ export default {
     }
   },
   created() {
-    this.getAuth()
+    // this.getAuth()
     if (this.$route.query.q) {
       const q = this.$route.query.q
       this.searchText = q
@@ -218,15 +218,13 @@ export default {
     },
 
     async fetchAPIByMaSoBhxh(maSoBhxh) {
-      if (!this.key) await this.getAuth()
       const headers = {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.key}`,
       }
 
-      const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuThongTinBHYT?maSoBhxh=${maSoBhxh.slice(
+      const API_URL = `https://cms.buudienhuyenmelinh.vn/api/bhyts/${maSoBhxh.slice(
         maSoBhxh.length - 10
-      )}`
+      )}/`
 
       const res = await fetch(API_URL, {
         method: 'GET',

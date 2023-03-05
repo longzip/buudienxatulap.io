@@ -218,17 +218,19 @@ export default {
     },
 
     async fetchAPIByMaSoBhxh(maSoBhxh) {
-      const headers = {
-        'Content-Type': 'application/json',
-      }
+      // if (!this.key) await this.getAuth()
+      // const headers = {
+      //   'Content-Type': 'application/json',
+      //   Authorization: `Bearer ${this.key}`,
+      // }
 
       const API_URL = `https://cms.buudienhuyenmelinh.vn/api/bhyts/${maSoBhxh.slice(
         maSoBhxh.length - 10
-      )}/`
+      )}`
 
       const res = await fetch(API_URL, {
         method: 'GET',
-        headers,
+        // headers,
       })
 
       const json = await res.json()

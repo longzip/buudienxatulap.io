@@ -14,11 +14,11 @@
             v-model="searchText"
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text"
-            placeholder="Họ và tên (đầy đủ)"
+            placeholder="Mã số thẻ BHYT"
             @keydown.enter="timKiem()"
           />
           <p class="text-red-500 text-xs italic mb-5">
-            Tra cứu theo họ và tên hoặc nhập mã số thẻ BHYT rồi bấm nút Tra cứu.
+            Nhập mã số thẻ BHYT rồi bấm nút Tra cứu.
           </p>
           <div class="flex items-center justify-between">
             <button
@@ -30,7 +30,7 @@
             </button>
             <a
               class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="tel:0978333963"
+              href="https://m.me/ThamBuuDien"
             >
               Bạn cần trợ giúp?
             </a>
@@ -112,7 +112,7 @@
                 >Lỗ Văn Long</a
               >.
             </p>
-            <p class="text-center text-red-500 text-xl mt-10">
+            <p v-if="show" class="text-center text-red-500 text-xl mt-10">
               Để gia hạn thẻ BHYT hết hạn, bạn chỉ cần đến
               <strong
                 >Điểm thu bảo hiểm xã hội, bảo hiểm y tế Bưu điện xã Tự
@@ -173,6 +173,9 @@ export default {
         ' ngày'
       )
     },
+  },
+  props: {
+    show: Boolean,
   },
   data() {
     return {

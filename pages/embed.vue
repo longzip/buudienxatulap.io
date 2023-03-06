@@ -1,5 +1,5 @@
 <template>
-  <TraCuuTheBHYT />
+  <TraCuuTheBHYT :show="false" />
 </template>
 <script>
 export default {

@@ -49,7 +49,7 @@
           class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
         >
           <div class="px-6">
-            <TraCuuTheBHYT />
+            <TraCuuTheBHYT :show="true" />
             <HoThiTham />
           </div>
         </div>

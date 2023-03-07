@@ -82,6 +82,6 @@
   </div>
 </template>
 <script>
-// import "@fortawesome/fontawesome-free/css/all.min.css";
+import '@fortawesome/fontawesome-free/css/all.min.css'
 export default {}
 </script>

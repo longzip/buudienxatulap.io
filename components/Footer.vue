@@ -2,7 +2,7 @@
   <footer class="relative bg-gray-300 pt-8 pb-6">
     <div
       class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-      style="height: 80px;"
+      style="height: 80px"
     >
       <svg
         class="absolute bottom-0 overflow-hidden"
@@ -24,27 +24,36 @@
         <div class="w-full lg:w-6/12 px-4">
           <h4 class="text-3xl font-semibold">Cảm ơn bạn đã ghé thăm!</h4>
           <h5 class="text-lg mt-0 mb-2 text-gray-700">
-            Yêu mọi người quá. Có câu hỏi gì cần cứ biểu ạ, 😍 Hồ Thị Thắm 😍 sẽ trả lời hết nha!
+            Yêu mọi người quá. Có câu hỏi gì cần cứ biểu ạ, 😍 Hồ Thị Thắm 😍 sẽ
+            trả lời hết nha!
           </h5>
-          <div class="zalo-follow-only-button" data-oaid="907870636305349915"></div>
+          <div
+            class="zalo-follow-only-button"
+            data-oaid="907870636305349915"
+          ></div>
           <div class="mt-6 mb-12">
-            <a target="_blank" href="https://youtube.com/channel/UC8skczWH9dMoyzU0LPYQ4yA?sub_confirmation=1"
+            <a
+              target="_blank"
+              href="https://youtube.com/channel/UC8skczWH9dMoyzU0LPYQ4yA?sub_confirmation=1"
               class="bg-white text-red-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
             >
               <i class="flex fab fa-youtube"></i></a
-            ><a target="_blank" href="https://www.facebook.com/ThamBuuDien"
+            ><a
+              target="_blank"
+              href="https://www.facebook.com/ThamBuuDien"
               class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-              
             >
               <i class="flex fab fa-facebook-square"></i></a
-            ><a  target="_blank" href="https://www.instagram.com/thambuudien/"
+            ><a
+              target="_blank"
+              href="https://www.instagram.com/thambuudien/"
               class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-
             >
               <i class="flex fab fa-instagram"></i></a
-            ><a target="_blank" href="https://www.tiktok.com/@hothitham1986"
+            ><a
+              target="_blank"
+              href="https://www.tiktok.com/@hothitham1986"
               class="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-
             >
               <i class="flex fab fa-tiktok"></i>
             </a>
@@ -97,7 +106,8 @@
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
                     href="/bao-hiem-bat-buoc-oto-xe-may/"
-                    >Bảo hiểm bắt buộc ô tô, xe máy: quyền lợi vượt trội phí mua</a
+                    >Bảo hiểm bắt buộc ô tô, xe máy: quyền lợi vượt trội phí
+                    mua</a
                   >
                 </li>
               </ul>
@@ -119,13 +129,6 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/tra-thoi-han-bao-hiem-y-te/"
-                    >Tra thời hạn bảo hiểm y tế</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
                     href="/gia-han-the-bhyt-tai-nha/"
                     >Tra cứu mức đóng BHYT</a
                   >
@@ -137,19 +140,12 @@
                     >Bưu điện Hà Nội</a
                   >
                 </li>
-                
+
                 <li>
                   <a
                     class="mt-3 text-red-700 hover:text-red-900 font-semibold block pb-2 text-2xl"
                     href="tel:0978333963"
                     >☎️0978333963</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="text-red-700 hover:text-red-900 font-semibold block pb-2 text-2xl"
-                    href="/ho-thi-tham/"
-                    >👉Hồ Thị Thắm</a
                   >
                 </li>
               </ul>
@@ -163,7 +159,8 @@
       >
         <div class="w-full md:w-4/12 px-4 mx-auto text-center">
           <div class="text-sm text-gray-600 font-semibold py-1">
-            Copyright © {{date}} Bưu điện văn hóa xã Tự Lập. Thiết kế website hiện đại cùng
+            Copyright © {{ date }} Bưu điện văn hóa xã Tự Lập. Thiết kế website
+            hiện đại cùng
             <a
               href="https://lovanlong.ga/"
               class="text-yellow-700 hover:text-yellow-900"
@@ -179,28 +176,30 @@
 export default {
   data() {
     return {
-      date: new Date().getFullYear()
+      date: new Date().getFullYear(),
     }
   },
-    mounted(){
-    const chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "103440001315066");
-      chatbox.setAttribute("attribution", "biz_inbox");
+  mounted() {
+    const chatbox = document.getElementById('fb-customer-chat')
+    chatbox.setAttribute('page_id', '103440001315066')
+    chatbox.setAttribute('attribution', 'biz_inbox')
 
-       window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v14.0'
-        });
-      };
+    window.fbAsyncInit = function () {
+      FB.init({
+        xfbml: true,
+        version: 'v14.0',
+      })
+    }
 
-      (function(d, s, id) {
-        let js; const fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-  }
+    ;(function (d, s, id) {
+      let js
+      const fjs = d.getElementsByTagName(s)[0]
+      if (d.getElementById(id)) return
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js'
+      fjs.parentNode.insertBefore(js, fjs)
+    })(document, 'script', 'facebook-jssdk')
+  },
 }
 </script>

@@ -179,7 +179,7 @@
               </button>
             </div>
             <p class="text-center text-gray-500 text-xs mt-10">
-              &copy;2022 bởi
+              &copy;2023 bởi
               <a
                 class="text-blue-500 hover:text-blue-800"
                 href="https://lovanlong.ga"
@@ -232,7 +232,7 @@ export default {
     },
     daThu(value) {
       if (
-        new Date(value.tuNgayDt).toISOString().slice(0, 4) === '2022' &&
+        new Date(value.tuNgayDt).toISOString().slice(0, 4) === '2023' &&
         value.soTheBhyt.slice(0, 2) === 'GD'
       )
         return 'Đã thu'
@@ -261,7 +261,6 @@ export default {
         .filter(
           (t) =>
             t.tongTien &&
-            (t.coTheUuTienCaoHon !== '1' || t.coTheUuTienCaoHon !== true) &&
             (t.soTheBhyt.slice(0, 2) !== 'GD' ||
               new Date(t.tuNgayDt).toISOString().slice(0, 4) !== '2023')
         )
@@ -272,194 +271,203 @@ export default {
           0
         )
     },
-    methods: {
-      async fetchUserGhiChu() {
-        const headers = {
-          'Content-Type': 'application/json',
-        }
-
-        const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/user-ghi-chu'
-
-        const res = await fetch(API_URL, {
-          method: 'GET',
-          headers,
-        })
-        const text = await res.text()
-        return text
-      },
-      async fetchAPIByMaSoBhxh(maSoBhxh) {
-        if (!this.key) await this.getAuth()
-        const headers = {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${this.key}`,
-        }
-
-        const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuThongTinBHYT?maSoBhxh=${maSoBhxh.slice(
-          maSoBhxh.length - 10
-        )}`
-
-        const res = await fetch(API_URL, {
-          method: 'GET',
-          headers,
-        })
-
-        const json = await res.json()
-        if (json.errors) {
-          throw new Error('Failed to fetch API')
-        }
-        return json.result
-      },
-      async getAuth() {
-        this.key = await this.fetchUserGhiChu()
-      },
-      async save(bhyt) {
-        const headers = {
-          'Content-Type': 'application/json',
-        }
-
-        const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/bhyts'
-
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          headers,
-          body: JSON.stringify(bhyt),
-        })
-
-        const json = await res.json()
-        if (json.errors) {
-          throw new Error('Failed to fetch API')
-        }
-        return json
-      },
-      async dongBo(maSoBhxh) {
-        try {
-          const { thongTinTK1, thongTinTheHGD, trangThaiThe } =
-            await this.fetchAPIByMaSoBhxh(maSoBhxh)
-          const theBHYT = { ...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe }
-          const found = this.dsBhyts.find(
-            (x) =>
-              x.maSoBhxh === theBHYT.maSoBhxh || x.soSoBhxh === theBHYT.soSoBhxh
-          )
-          if (!found) {
-            const bhyt = await this.save(theBHYT)
-            this.capNhatDanhSach([...this.dsBhyts, bhyt])
-            this.searchText = ''
-          }
-        } catch (error) {
-          console.log(error)
-        }
-      },
-      async traCuu(searchText) {
-        if (!searchText) return
-        const name = searchText
-          .split(' ')
-          .map((value) => value.charAt(0).toUpperCase() + value.slice(1))
-          .join(' ')
-        const regex = /[0-9]/g
-        const maSo = name.match(regex)
-        if (!maSo) return
-        await this.dongBo(maSo)
-      },
-      async timKiem(searchText) {
-        if (!searchText) return
-        const name = searchText
-          .split(' ')
-          .map((value) => value.charAt(0).toUpperCase() + value.slice(1))
-          .join(' ')
-        const regex = /[0-9]/g
-        const maSo = name.match(regex)
-        if (!maSo) return
+  },
+  async created() {
+    this.getAuth()
+    const { q, maHoGD, maSoBhxhs } = this.$route.query
+    if (maSoBhxhs) {
+      await this.getAllByMaSoBhxhs(maSoBhxhs)
+      await this.tinhLaiMucDong()
+      return
+    }
+    if (q) {
+      await this.timKiem(q)
+    }
+    // maHoGd
+    if (maHoGD) {
+      await this.getAllByMaHoGd(maHoGD)
+    }
+    this.tinhLaiMucDong()
+  },
+  methods: {
+    async fetchUserGhiChu() {
+      const headers = {
+        'Content-Type': 'application/json',
+      }
+      const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/user-ghi-chu'
+      const res = await fetch(API_URL, {
+        method: 'GET',
+        headers,
+      })
+      const text = await res.text()
+      return text
+    },
+    async fetchAPIByMaSoBhxh(maSoBhxh) {
+      if (!this.key) await this.getAuth()
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.key}`,
+      }
+      const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuThongTinBHYT?maSoBhxh=${maSoBhxh.slice(
+        maSoBhxh.length - 10
+      )}`
+      const res = await fetch(API_URL, {
+        method: 'GET',
+        headers,
+      })
+      const json = await res.json()
+      if (json.errors) {
+        throw new Error('Failed to fetch API')
+      }
+      return json.result
+    },
+    async getAuth() {
+      this.key = await this.fetchUserGhiChu()
+    },
+    async save(bhyt) {
+      const headers = {
+        'Content-Type': 'application/json',
+      }
+      const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/bhyts'
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(bhyt),
+      })
+      const json = await res.json()
+      if (json.errors) {
+        throw new Error('Failed to fetch API')
+      }
+      return json
+    },
+    async dongBo(maSoBhxh) {
+      try {
         const { thongTinTK1, thongTinTheHGD, trangThaiThe } =
-          await this.fetchAPIByMaSoBhxh(maSo.join(''))
+          await this.fetchAPIByMaSoBhxh(maSoBhxh)
         const theBHYT = { ...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe }
-        // const theBHYTs = await fetch(`https://cms.buudienhuyenmelinh.vn/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
-        //     res.json()
-        // );
-        const bhyt = await this.save(theBHYT)
-        await this.capNhatDanhSach([bhyt])
-      },
-      async getAllByMaHoGd(maHoGd) {
-        if (!maHoGd) return
-        const theBHYTs = await fetch(
-          `https://cms.buudienhuyenmelinh.vn/api/bhyts?&maHoGd=${maHoGd}`
-        ).then((res) => res.json())
-        await this.capNhatDanhSach(theBHYTs.filter((item) => item.tuNgayDt))
-      },
-      async getAllByMaSoBhxhs(maSoBhxhs) {
-        if (!maSoBhxhs) return
-        const theBHYTs = await fetch(
-          `https://cms.buudienhuyenmelinh.vn/api/bhyts?&maSoBhxhs=${maSoBhxhs}`
-        ).then((res) => res.json())
-        await this.capNhatDanhSach(theBHYTs.filter((item) => item.tuNgayDt))
-      },
-      capNhatDanhSach(theBHYTs) {
-        for (let index = 0; index < theBHYTs.length; index++) {
-          const bhyt = theBHYTs[index]
-          const diffTime = new Date(bhyt.denNgayDt) - new Date()
-          if (Math.ceil(diffTime / (1000 * 60 * 60 * 24)) < 31) {
-            const soNguoiThamGia = this.dsBhyts.filter(
-              (item) =>
-                item.tongTien ||
-                (new Date(item.tuNgayDt).toISOString().slice(0, 4) === '2022' &&
-                  item.soTheBhyt.slice(0, 2) === 'GD')
-            ).length
-            const thu = soNguoiThamGia < 5 ? soNguoiThamGia + 1 : 5
-            bhyt.tongTien = this.mucDong[thu]
-          }
-          const found = this.dsBhyts.find((x) => x.maSoBhxh === bhyt.maSoBhxh)
-          if (found) Object.assign(found, bhyt)
-          else this.dsBhyts.push(bhyt)
+        const found = this.dsBhyts.find(
+          (x) =>
+            x.maSoBhxh === theBHYT.maSoBhxh || x.soSoBhxh === theBHYT.soSoBhxh
+        )
+        if (!found) {
+          const bhyt = await this.save(theBHYT)
+          this.capNhatDanhSach([...this.dsBhyts, bhyt])
+          this.searchText = ''
         }
-        this.taoDonHang()
-      },
-      async getTaiTuc() {
-        this.dsBhyts = await fetch(
-          'https://cms.buudienhuyenmelinh.vn/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0'
-        ).then((res) => res.json())
-      },
-      isConHan(value) {
-        if (!value) return false
-        const diffTime = new Date(value) - new Date()
-        return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 31
-      },
-      remove(maSoBhxh) {
-        this.dsBhyts = this.dsBhyts.filter((i) => i.maSoBhxh !== maSoBhxh)
-        this.tinhLaiMucDong()
-      },
-      async tinhLaiMucDong() {
-        const dsBhytsCopy = [...this.dsBhyts]
-        for (let index = 0; index < dsBhytsCopy.length; index++) {
-          const bhyt = dsBhytsCopy[index]
-          if (
-            bhyt.soTheBhyt.slice(0, 2) !== 'GD' ||
-            new Date(bhyt.tuNgayDt).toISOString().slice(0, 4) !== '2022'
-          )
-            bhyt.tongTien = 0
-        }
-        this.dsBhyts = []
-        await this.capNhatDanhSach(
-          dsBhytsCopy.filter(
+      } catch (error) {
+        // console.log(error)
+      }
+    },
+    async traCuu(searchText) {
+      if (!searchText) return
+      const name = searchText
+        .split(' ')
+        .map((value) => value.charAt(0).toUpperCase() + value.slice(1))
+        .join(' ')
+      const regex = /[0-9]/g
+      const maSo = name.match(regex)
+      if (!maSo) return
+      await this.dongBo(maSo)
+    },
+    async timKiem(searchText) {
+      if (!searchText) return
+      const name = searchText
+        .split(' ')
+        .map((value) => value.charAt(0).toUpperCase() + value.slice(1))
+        .join(' ')
+      const regex = /[0-9]/g
+      const maSo = name.match(regex)
+      if (!maSo) return
+      const { thongTinTK1, thongTinTheHGD, trangThaiThe } =
+        await this.fetchAPIByMaSoBhxh(maSo.join(''))
+      const theBHYT = { ...thongTinTheHGD, ...thongTinTK1, ...trangThaiThe }
+      // const theBHYTs = await fetch(`https://cms.buudienhuyenmelinh.vn/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
+      //     res.json()
+      // );
+      const bhyt = await this.save(theBHYT)
+      await this.capNhatDanhSach([bhyt])
+    },
+    async getAllByMaHoGd(maHoGd) {
+      if (!maHoGd) return
+      const theBHYTs = await fetch(
+        `https://cms.buudienhuyenmelinh.vn/api/bhyts?&maHoGd=${maHoGd}`
+      ).then((res) => res.json())
+      await this.capNhatDanhSach(theBHYTs.filter((item) => item.tuNgayDt))
+    },
+    async getAllByMaSoBhxhs(maSoBhxhs) {
+      if (!maSoBhxhs) return
+      const theBHYTs = await fetch(
+        `https://cms.buudienhuyenmelinh.vn/api/bhyts?&maSoBhxhs=${maSoBhxhs}`
+      ).then((res) => res.json())
+      await this.capNhatDanhSach(theBHYTs.filter((item) => item.tuNgayDt))
+    },
+    capNhatDanhSach(theBHYTs) {
+      for (let index = 0; index < theBHYTs.length; index++) {
+        const bhyt = theBHYTs[index]
+        const diffTime = new Date(bhyt.denNgayDt) - new Date()
+        if (Math.ceil(diffTime / (1000 * 60 * 60 * 24)) < 31) {
+          const soNguoiThamGia = this.dsBhyts.filter(
             (item) =>
               item.tongTien ||
-              (new Date(item.tuNgayDt).toISOString().slice(0, 4) === '2022' &&
+              (new Date(item.tuNgayDt).toISOString().slice(0, 4) === '2023' &&
                 item.soTheBhyt.slice(0, 2) === 'GD')
-          )
+          ).length
+          const thu = soNguoiThamGia < 5 ? soNguoiThamGia + 1 : 5
+          bhyt.tongTien = this.mucDong[thu]
+        }
+        const found = this.dsBhyts.find((x) => x.maSoBhxh === bhyt.maSoBhxh)
+        if (found) Object.assign(found, bhyt)
+        else this.dsBhyts.push(bhyt)
+      }
+      this.taoDonHang()
+    },
+    async getTaiTuc() {
+      this.dsBhyts = await fetch(
+        'https://cms.buudienhuyenmelinh.vn/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0'
+      ).then((res) => res.json())
+    },
+    isConHan(value) {
+      if (!value) return false
+      const diffTime = new Date(value) - new Date()
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 31
+    },
+    remove(maSoBhxh) {
+      this.dsBhyts = this.dsBhyts.filter((i) => i.maSoBhxh !== maSoBhxh)
+      this.tinhLaiMucDong()
+    },
+    async tinhLaiMucDong() {
+      const dsBhytsCopy = [...this.dsBhyts]
+      for (let index = 0; index < dsBhytsCopy.length; index++) {
+        const bhyt = dsBhytsCopy[index]
+        if (
+          bhyt.soTheBhyt.slice(0, 2) !== 'GD' ||
+          new Date(bhyt.tuNgayDt).toISOString().slice(0, 4) !== '2023'
         )
-        await this.capNhatDanhSach(dsBhytsCopy.filter((item) => !item.tongTien))
-      },
-      async taoDonHang() {
-        const query = Object.assign({}, this.$route.query)
-        query.maSoBhxhs = this.dsBhyts.map((item) => item.maSoBhxh).join(',')
-        await this.$router.push({ query })
-      },
-      inKeKhai() {
-        const a = document.createElement('a')
-        a.target = '_blank'
-        a.href = `https://cms.buudienhuyenmelinh.vn/thanh-vien-ho-gia-dinh/1/pdf?maSoBhxhs=${this.dsBhyts
-          .map((item) => item.maSoBhxh)
-          .join(',')}`
-        a.click()
-      },
+          bhyt.tongTien = 0
+      }
+      this.dsBhyts = []
+      await this.capNhatDanhSach(
+        dsBhytsCopy.filter(
+          (item) =>
+            item.tongTien ||
+            (new Date(item.tuNgayDt).toISOString().slice(0, 4) === '2023' &&
+              item.soTheBhyt.slice(0, 2) === 'GD')
+        )
+      )
+      await this.capNhatDanhSach(dsBhytsCopy.filter((item) => !item.tongTien))
+    },
+    async taoDonHang() {
+      const query = Object.assign({}, this.$route.query)
+      query.maSoBhxhs = this.dsBhyts.map((item) => item.maSoBhxh).join(',')
+      await this.$router.push({ query })
+    },
+    inKeKhai() {
+      const a = document.createElement('a')
+      a.target = '_blank'
+      a.href = `https://cms.buudienhuyenmelinh.vn/thanh-vien-ho-gia-dinh/1/pdf?maSoBhxhs=${this.dsBhyts
+        .map((item) => item.maSoBhxh)
+        .join(',')}`
+      a.click()
     },
   },
 }

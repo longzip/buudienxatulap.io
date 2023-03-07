@@ -7,18 +7,19 @@
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-first-name"
           >
-            Nội dung:
+            Họ và tên hoặc mã số BHXH, BHYT:
           </label>
           <input
             id="grid-first-name"
             v-model="searchText"
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text"
-            placeholder="Mã số thẻ BHYT"
+            placeholder="Tên"
             @keydown.enter="timKiem()"
           />
           <p class="text-red-500 text-xs italic mb-5">
-            Nhập mã số thẻ BHYT rồi bấm nút Tra cứu.
+            Tìm kiếm theo họ và tên hoặc nhập mã số thẻ BHYT rồi bấm nút Tra
+            cứu.
           </p>
           <div class="flex items-center justify-between">
             <button
@@ -30,7 +31,7 @@
             </button>
             <a
               class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="https://m.me/ThamBuuDien"
+              href="tel:0978333963"
             >
               Bạn cần trợ giúp?
             </a>
@@ -62,33 +63,28 @@
                       {{ bhyt.ngaySinhDt | namSinh }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                      Địa chỉ: <em>{{ bhyt.diaChiLh }}</em>
-                    </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
                       Số thẻ BHYT: <strong>{{ bhyt.soTheBhyt }}</strong>
-                      <span class="text-xl"
-                        >({{ bhyt.denNgayDt | soNgay }})</span
-                      >
                     </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                      Sử dụng từ ngày: {{ bhyt.tuNgayDt | ngayThang }}
-                    </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                      đến ngày
-                      <strong>{{ bhyt.denNgayDt | ngayThang }}</strong>
-                    </p>
-                    <p class="text-xl text-blue-600 dark:text-gray-400">
+                    <p class="text-xl text-gray-500 dark:text-gray-400">
                       Ngày 5 năm liên tục: {{ bhyt.ngay5Nam | ngayThangString }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                       Nơi KCB: <em>{{ bhyt.maKCB }}</em>
                     </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Hạn thẻ: {{ bhyt.tuNgayDt | ngayThang }} -
+                      {{ bhyt.denNgayDt | ngayThang }}
+                    </p>
 
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                       Gia hạn:
-                      {{ new Date(bhyt.ngayLap).toLocaleDateString() }} -
                       <strong
-                        >đ{{ parseInt(bhyt.tongTien).toLocaleString() }}</strong
+                        >{{ bhyt.ngayLap }} -
+                        <strong
+                          >đ{{
+                            parseInt(bhyt.tongTien).toLocaleString()
+                          }}</strong
+                        ></strong
                       >
                     </p>
                   </div>
@@ -102,6 +98,7 @@
                         !isConHan(bhyt.denNgayDt) ? 'Mua ngay' : 'Chi tiết'
                       }}</a
                     >
+                    <div>{{ bhyt.denNgayDt | soNgay }}</div>
                   </div>
                 </div>
               </li>
@@ -112,33 +109,22 @@
                 >Lỗ Văn Long</a
               >.
             </p>
-            <p v-if="show" class="text-center text-red-500 text-xl mt-10">
-              Để gia hạn thẻ BHYT hết hạn, bạn chỉ cần đến
-              <strong
-                >Điểm thu bảo hiểm xã hội, bảo hiểm y tế Bưu điện xã Tự
-                Lập</strong
-              >
-              (cạnh trạm y tế xã) gặp chị Hồ Thị Thắm (thay anh Lập nghỉ). Trong
-              trường hợp bạn không có điều kiện trực tiếp tới Bưu điện xã Tự
-              Lập, bạn có thể liên hệ
-              <a class="text-blue-600" href="https://zalo.me/0978333963"
-                >Zalo 0978 333 963</a
+            <p class="text-center text-red-500 text-xl mt-10">
+              Để gia hạn thẻ BHYT hết hạn, bạn chỉ cần đến Đại lý thu bảo hiểm
+              xã hội, bảo hiểm y tế Bưu điện xã Tự Lập gặp chị Hồ Thị Thắm
+              0978333963 (thay anh Lập đã nghỉ). Trong trường hợp bạn không có
+              điều kiện trực tiếp tới Bưu điện xã Tự Lập, bạn có thể đóng tiền
+              gia hạn thẻ BHYT trực tuyến
+              <a class="text-blue-600" href="/gia-han-the-bhyt-tai-nha/"
+                >tại đây</a
               >.
             </p>
           </div>
           <div v-else>
             <p class="text-center text-yellow-500 text-2xl pt-16">
-              Người dân chủ động theo dõi, kiểm tra, ghi nhớ quá trình tham gia,
-              giá trị sử dụng thẻ BHYT nhằm kịp thời gia hạn thẻ BHYT sau khi
-              thẻ BHYT (cũ) hết hạn, đảm bảo quyền lợi khám chữa bệnh BHYT liên
-              tục; đồng thời tránh tình trạng gian lận, trục lợi quỹ BHYT (nếu
-              có).
-              <a
-                class="text-blue-600"
-                target="_blank"
-                href="https://blog.hotham.vn/nhung-cach-theo-doi-qua-trinh-tham-gia-va-gia-tri-su-dung-the-bhyt-nham-dam-bao-quyen-loi-lien-tuc/"
-                >Xem thêm</a
-              >
+              Không cần nhớ mã số thẻ BHYT vẫn tra cứu được thời hạn sử dụng của
+              thẻ? Chỉ cần nhập họ và tên của bạn hoặc mã số thẻ vào ô tìm kiếm
+              Hồ Thị Thắm sẽ hiển thị kế quả chính xác cho bạn.
             </p>
           </div>
         </div>
@@ -174,9 +160,6 @@ export default {
       )
     },
   },
-  props: {
-    show: Boolean,
-  },
   data() {
     return {
       searchText: '',
@@ -185,15 +168,11 @@ export default {
     }
   },
   created() {
-    // this.getAuth()
+    this.getAuth()
     if (this.$route.query.q) {
       const q = this.$route.query.q
       this.searchText = q
       this.timKiem(q)
-    }
-    if (this.$route.query.maHoGd) {
-      const maHoGd = this.$route.query.maHoGd
-      this.timKiemHoGd(maHoGd)
     }
   },
   methods: {
@@ -203,15 +182,11 @@ export default {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.key}`,
       }
-
       const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuMaSoBHXH?maTinh=01&maHuyen=250&maXa=08986&hoTen=${searchText}&isCoDau=true&`
-      // const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuMaSoBHXH?maTinh=01&maHuyen=250&maXa=null&hoTen=${searchText}&isCoDau=true&`
-
       const res = await fetch(API_URL, {
         method: 'GET',
         headers,
       })
-
       const json = await res.json()
       if (json.errors) {
         throw new Error('Failed to fetch API')
@@ -219,37 +194,30 @@ export default {
 
       return json.result.value
     },
-
     async fetchAPIByMaSoBhxh(maSoBhxh) {
-      // if (!this.key) await this.getAuth()
-      // const headers = {
-      //   'Content-Type': 'application/json',
-      //   Authorization: `Bearer ${this.key}`,
-      // }
-
-      const API_URL = `https://cms.buudienhuyenmelinh.vn/api/bhyts/${maSoBhxh.slice(
+      if (!this.key) await this.getAuth()
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.key}`,
+      }
+      const API_URL = `https://ssm-api.vnpost.vn/api/services/app/TraCuu/TraCuuThongTinBHYT?maSoBhxh=${maSoBhxh.slice(
         maSoBhxh.length - 10
       )}`
-
       const res = await fetch(API_URL, {
         method: 'GET',
-        // headers,
+        headers,
       })
-
       const json = await res.json()
       if (json.errors) {
         throw new Error('Failed to fetch API')
       }
       return json.result
     },
-
     async fetchUserGhiChu() {
       const headers = {
         'Content-Type': 'application/json',
       }
-
       const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/user-ghi-chu'
-
       const res = await fetch(API_URL, {
         method: 'GET',
         headers,
@@ -262,15 +230,12 @@ export default {
       const headers = {
         'Content-Type': 'application/json',
       }
-
       const API_URL = 'https://cms.buudienhuyenmelinh.vn/api/bhyts'
-
       const res = await fetch(API_URL, {
         method: 'POST',
         headers,
         body: JSON.stringify(bhyt),
       })
-
       const json = await res.json()
       if (json.errors) {
         // console.error(json.errors)
@@ -278,49 +243,22 @@ export default {
       }
       return json
     },
-
     async getAllBHYTbyName(name) {
       const headers = {
         'Content-Type': 'application/json',
       }
-
       const API_URL = `https://cms.buudienhuyenmelinh.vn/api/bhyts?name=${name}`
-
       const res = await fetch(API_URL, {
         method: 'GET',
         headers,
       })
-
       const json = await res.json()
       if (json.errors) {
         // console.error(json.errors)
         throw new Error('Failed to fetch API')
       }
-
       this.dsBhyts = [...json]
     },
-
-    async getAllBHYTbyHoGd(maHoGd) {
-      const headers = {
-        'Content-Type': 'application/json',
-      }
-
-      const API_URL = `https://cms.buudienhuyenmelinh.vn/api/bhyts?&maHoGd=${maHoGd}`
-
-      const res = await fetch(API_URL, {
-        method: 'GET',
-        headers,
-      })
-
-      const json = await res.json()
-      if (json.errors) {
-        // console.error(json.errors)
-        throw new Error('Failed to fetch API')
-      }
-
-      return [...json]
-    },
-
     async dongBo(maSoBhxh) {
       try {
         const { thongTinTK1, thongTinTheHGD, trangThaiThe } =
@@ -338,7 +276,6 @@ export default {
         await this.getAllBHYTbyName(maSoBhxh)
       }
     },
-
     async timKiem() {
       if (!this.searchText) return
       const name = this.searchText
@@ -347,7 +284,6 @@ export default {
         .join(' ')
       const regex = /[0-9]/g
       const maSo = this.searchText.match(regex)
-
       if (maSo) {
         await this.dongBo(maSo.join(''))
       } else {
@@ -363,19 +299,6 @@ export default {
         }
       }
     },
-    async timKiemHoGd(maHoGd) {
-      this.dsBhyts = []
-      const dsBhyts = await this.getAllBHYTbyHoGd(maHoGd)
-      try {
-        for (let index = 0; index < dsBhyts.length; index++) {
-          const { maSoBhxh } = dsBhyts[index]
-          await this.dongBo(maSoBhxh)
-        }
-      } catch (error) {
-        this.dsBhyts = dsBhyts
-      }
-    },
-
     async getTaiTuc() {
       this.dsBhyts = await fetch(
         'https://cms.buudienhuyenmelinh.vn/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0'

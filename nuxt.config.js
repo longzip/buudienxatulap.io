@@ -172,4 +172,11 @@ export default {
   //   host: '0', // default: localhost
   // },
   serverMiddleware: ['~/middleware/redirects.js'],
+  publicRuntimeConfig: {
+    baseURL: 'https://nuxtjs.org',
+  },
+  privateRuntimeConfig: {
+    apiSecret: process.env.API_SECRET,
+    apiCMSSecret: process.env.API_SECRET,
+  },
 }

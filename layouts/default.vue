@@ -20,17 +20,22 @@
       <span class="sr-only">Info</span>
       <div>
         <span class="font-medium"
-          >🎁Hỗ trợ từ 66k/tháng mức đóng BHXH tự nguyện hưởng lương hưu liên hệ
-          ngay</span
-        >
+          >🎁Hỗ trợ 60% mức đóng BHXH tự nguyện với thành viên hộ nghèo, 50% với
+          thành viên hộ cận nghèo, 20% với các trường hợp khác
+        </span>
         (
         <a
           target="_blank"
           class="text-blue-600"
-          href="https://fb.me/ThamBuuDien/"
-          >Hồ Thị Thắm</a
+          href="https://blog.hotham.vn/ha-noi-ho-tro-den-60-tien-dong-bao-hiem-xa-hoi-tu-nguyen/"
+          >Xem chi tiết..</a
         >
-        ). Tra cứu thẻ BHYT hết hạn truy cập
+        ). Để gia hạn thẻ BHYT hết hạn, đóng tiếp BHXH tự nguyện
+        <strong>BẠN</strong> chỉ cần đến Đại lý thu bảo hiểm xã hội, bảo hiểm y
+        tế <strong>Bưu điện xã Tự Lập</strong> gặp chị
+        <strong>Hồ Thị Thắm</strong>
+        <em class="font-medium">(thay anh Lập đã nghỉ)</em>. Kiểm tra thẻ BHYT
+        hết hạn ở BĐ xã Tự Lập truy cập
         <a class="text-blue-600" href="/tra-thoi-han-bao-hiem-y-te/">tại đây</a>
         .
       </div>
@@ -64,6 +69,6 @@
   </div>
 </template>
 <script>
-import '@fortawesome/fontawesome-free/css/all.min.css'
+// import "@fortawesome/fontawesome-free/css/all.min.css";
 export default {}
 </script>

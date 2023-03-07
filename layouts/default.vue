@@ -60,19 +60,6 @@
 
       gtag('config', 'G-QCN6S7BFNG')
     </script>
-    <script id="mcjs">
-      !(function (c, h, i, m, p) {
-        ;(m = c.createElement(h)),
-          (p = c.getElementsByTagName(h)[0]),
-          (m.async = 1),
-          (m.src = i),
-          p.parentNode.insertBefore(m, p)
-      })(
-        document,
-        'script',
-        'https://chimpstatic.com/mcjs-connected/js/users/03e33e3cdd5e422de02a01d6e/a349bd51a875ff4001de83a79.js'
-      )
-    </script>
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
   </div>
 </template>

@@ -15,8 +15,7 @@
           <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
             <div class="pr-12">
               <h1 class="text-white font-semibold text-5xl">
-                Tra cứu mã số thẻ bảo hiểm y tế, thời điểm 5 năm liên tục, thời
-                hạn sử dụng đơn giản
+                Hướng dẫn tra cứu thẻ BHYT
               </h1>
               <p class="mt-4 text-lg text-gray-300"></p>
             </div>

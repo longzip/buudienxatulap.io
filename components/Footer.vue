@@ -84,8 +84,8 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://www.vaytienbuudien.ga/"
-                    >Vay hưu trí</a
+                    href="/tu-van-dich-vu-tiet-kiem-buu-dien/"
+                    >Tư vấn dịch vụ tiết kiệm bưu điện</a
                   >
                 </li>
                 <li>

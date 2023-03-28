@@ -52,7 +52,7 @@
               <i class="flex fab fa-instagram"></i></a
             ><a
               target="_blank"
-              href="https://www.tiktok.com/@hothitham1986"
+              href="https://www.tiktok.com/@hotham.vn"
               class="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
             >
               <i class="flex fab fa-tiktok"></i>
@@ -70,14 +70,14 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://shop.buudienxatulap.ga/"
+                    href="https://shop.hotham.vn/"
                     >Cửa hàng</a
                   >
                 </li>
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://blog.buudienxatulap.ga/"
+                    href="https://blog.hotham.vn/"
                     >Blog</a
                   >
                 </li>
@@ -162,6 +162,7 @@
             Copyright © {{ date }} Bưu điện văn hóa xã Tự Lập. Thiết kế website
             hiện đại cùng
             <a
+              target="_blank"
               href="https://lovanlong.ga/"
               class="text-yellow-700 hover:text-yellow-900"
               >Lỗ Văn Long</a

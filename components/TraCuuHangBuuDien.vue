@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4">
       <div class="items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-          <!-- <label
+          <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-first-name"
           >
@@ -35,7 +35,7 @@
             >
               Bạn cần trợ giúp?
             </a>
-          </div> -->
+          </div>
         </div>
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
           <div

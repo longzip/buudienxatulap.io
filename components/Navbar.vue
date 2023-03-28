@@ -28,7 +28,7 @@
           <li class="flex items-center">
             <a
               class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="https://www.hotham.shop/"
+              href="https://shop.hotham.vn/"
               target="_blank"
               ><i
                 class="lg:text-gray-300 text-gray-500 fa fa-shopping-cart text-lg leading-lg mr-2"
@@ -61,7 +61,7 @@
           <li class="flex items-center">
             <a
               class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="https://www.tiktok.com/@hothitham1986"
+              href="https://www.tiktok.com/@hotham.vn"
               ><i
                 class="lg:text-gray-300 text-gray-500 fab fa-tiktok text-lg leading-lg "
               ></i

@@ -28,7 +28,12 @@
           <div
             v-for="item in bangLaiSuat"
             :key="item.soThang"
-            class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
+            :class="[
+              item.tangThem
+                ? 'border-indigo-500'
+                : 'border-gray-100',
+              'flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white',
+            ]"
           >
             <h3 class="mb-4 text-2xl font-semibold">
               Gửi {{ item.soThang }} tháng
@@ -51,7 +56,12 @@
             <a
               target="_blank"
               href="https://m.me/103440001315066"
-              class="text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-primary-900"
+              :class="[
+              item.tangThem
+                ? 'bg-indigo-600 hover:bg-indigo-700'
+                : 'bg-gray-600 hover:bg-indigo-700',
+              'text-white  focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-primary-900',
+            ]"
               >Lãi suất in trên sổ TK: {{ ((item.laiSuat+item.tangThem)*100).toFixed(2) }}%</a
             >
           </div>
@@ -99,6 +109,12 @@ export default {
         hangUuTien
       }})
     },
+  },
+  created() {
+    if (this.$route.query.q) {
+      const q = this.$route.query.q
+      this.fullName = q
+    }
   },
 }
 </script>

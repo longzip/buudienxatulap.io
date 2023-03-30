@@ -33,23 +33,26 @@
             <h3 class="mb-4 text-2xl font-semibold">
               Gửi {{ item.soThang }} tháng
             </h3>
-
-            <div class="font-bold">
-              Lãi suất in trên sổ TK: {{ ((item.laiSuat+item.tangThem)*100).toFixed(2) }}%
-            </div>
             <div>
               Lãi suất thông thường: {{ (item.laiSuat*100).toFixed(2) }}%
-              Lãi suất tặng thêm: {{ (item.tangThem*100).toFixed(2) }}%
             </div>
+            <div>
+                Số tiền quy đổi KHCNUT: {{ parseInt(item.KHCNUT).toLocaleString() }}
+            </div>
+            <div>
+                <em>{{ item.hangUuTien }}</em>
+            </div>
+            <!-- <div>
+                Nhóm ưu tiên: {{ parseInt(item.NhomUT).toLocaleString() }}
+            </div> -->
             <div class="font-bold">
-                Số tiền quy đổi KHCNUT: {{ item.NhomUT }}
-
+                Lãi suất tặng thêm: {{ (item.tangThem*100).toFixed(2) }}%
             </div>
             <a
               target="_blank"
               href="https://m.me/103440001315066"
               class="text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-primary-900"
-              >Bắt đầu</a
+              >Lãi suất in trên sổ TK: {{ ((item.laiSuat+item.tangThem)*100).toFixed(2) }}%</a
             >
           </div>
         </div>
@@ -86,12 +89,14 @@ export default {
         const KHCNUT = (((this.soTienGui*soThang/6/100000).toFixed(0))*100000).toFixed(0)
         const NhomUT = soThang >= 48 ? 0 : KHCNUT >= 3000000000 ? 1 : KHCNUT >= 500000000 ? 2 : KHCNUT >= 100000000 ? 3 : 0
         const tangThem = NhomUT === 1 ? this.laiSuat1[index] : NhomUT === 2 ? this.laiSuat2[index] : NhomUT === 3 ? this.laiSuat3[index] : 0
+        const hangUuTien = KHCNUT >= 500000000 && KHCNUT < 1000000000 ? "Hạng Bạc - Nhóm 2" : KHCNUT >= 1000000000 && KHCNUT < 3000000000 ? "Hạng Ti tan - Nhóm 2" :  KHCNUT >= 100000000 && KHCNUT < 500000000 ? "Hạng Tiềm năng - Nhóm 3" : KHCNUT >= 3000000000 && KHCNUT<5000000000 ? "Hạng Vàng - Nhóm 1" : KHCNUT >= 5000000000 && KHCNUT < 10000000000? "Hạng Bạch kim - Nhóm 1" : KHCNUT >= 10000000000? "Hạng Kim cương - Nhóm 1" : "Không đủ Điều kiện"
         return {
         soThang,
         laiSuat: this.laiSuat[index],
         KHCNUT,
         NhomUT,
-        tangThem
+        tangThem,
+        hangUuTien
       }})
     },
   },

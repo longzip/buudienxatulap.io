@@ -70,8 +70,8 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://shop.hotham.vn/"
-                    >Cửa hàng</a
+                    href="/mua-hang-tieu-dung/"
+                    >Mua hàng tiêu dùng bưu điện</a
                   >
                 </li>
                 <li>
@@ -191,7 +191,6 @@ export default {
         version: 'v14.0',
       })
     }
-
     ;(function (d, s, id) {
       let js
       const fjs = d.getElementsByTagName(s)[0]

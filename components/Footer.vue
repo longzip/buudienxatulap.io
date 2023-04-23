@@ -70,8 +70,8 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/mua-hang-tieu-dung/"
-                    >Mua hàng tiêu dùng bưu điện</a
+                    href="https://shop.hotham.vn/"
+                    >Cửa hàng</a
                   >
                 </li>
                 <li>

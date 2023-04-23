@@ -28,12 +28,35 @@
           <li class="flex items-center">
             <a
               class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="/mua-hang-tieu-dung/"
+              href="https://shop.hotham.vn/"
               target="_blank"
               ><i
                 class="lg:text-gray-300 text-gray-500 fa fa-shopping-cart text-lg leading-lg mr-2"
               ></i>
-              Mua hàng tiêu dùng bưu điện</a
+              Cửa hàng</a
+            >
+          </li>
+          <li class="flex items-center">
+            <a
+              class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+              href="https://tuyendung.hotham.vn/"
+              target="_blank"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 fill-white"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+
+              Việc làm</a
             >
           </li>
         </ul>

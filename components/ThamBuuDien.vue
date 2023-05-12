@@ -1,6 +1,6 @@
 <template>
   <div>
-    <blockquote
+    <!-- <blockquote
       class="tiktok-embed"
       cite="https://www.tiktok.com/@bdvn.vietnampost/video/7226346307705720070"
       data-video-id="7226346307705720070"
@@ -128,6 +128,6 @@
         >
       </section>
     </blockquote>
-    <script async src="https://www.tiktok.com/embed.js"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script> -->
   </div>
 </template>

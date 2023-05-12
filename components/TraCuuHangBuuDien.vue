@@ -128,7 +128,11 @@
             <p class="text-center text-yellow-500 text-2xl pt-16">
               Để được hỗ trợ thêm hãy tham gia nhóm Zalo Hỗ Trợ khách hàng bưu
               điện xã Tự Lập tại
-              <a href="https://zalo.me/g/sdnmvi859">zalo.me/g/sdnmvi859</a>
+              <a
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                href="https://zalo.me/g/sdnmvi859"
+                >tại đây</a
+              >
             </p>
           </div>
         </div>

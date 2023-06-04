@@ -180,7 +180,7 @@ export default {
 
     async timKiem(searchText) {
       this.loading = true
-      this.itemCode = null
+      this.itemCode = {}
       this.loi = ''
       // this.TBL_INFO = {};
 

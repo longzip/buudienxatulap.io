@@ -1,8 +1,8 @@
 <template>
   <section class="relative py-20">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-1">
       <div class="items-center flex flex-wrap">
-        <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+        <div class="w-full md:w-6/12 ml-auto mr-auto px-1">
           <ThamBuuDien />
           <!-- <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -38,12 +38,28 @@
             </a>
           </div> -->
         </div>
-        <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+        <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
           <div
             v-if="loading"
             class="text-center text-yellow-500 text-2xl pt-16"
           >
             Đang tìm kiếm định vị bưu gửi.... Vui lòng chờ đợi.
+          </div>
+          <div v-if="itemCode && itemCode.Code">
+            <p
+              v-if="itemCode.Code === '99'"
+              class="text-center text-yellow-500 text-2xl pt-16"
+            >
+              Không tìm thấy định vị bưu gửi <strong>{{ searchText }}</strong
+              >. Vui lòng liên hệ bưu cục gửi hàng hoặc bấm
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+                @click="timKiem(searchText)"
+              >
+                tìm lại
+              </button>
+            </p>
           </div>
           <div v-if="itemCode && itemCode.TBL_INFO">
             <p class="text-gray-500 text-xl mt-10">
@@ -124,16 +140,21 @@
               >.
             </p>
           </div>
-          <div v-if="loi">
+          <div v-if="loi || itemCode.Message !== 'Lấy dữ liệu thành công'">
             <p class="text-center text-yellow-500 text-2xl pt-16">
               Không tìm thấy định vị bưu gửi <strong>{{ searchText }}</strong
-              >. Vui lòng kiểm tra lại lúc khác...
+              >. Hệ thống đang bảo trì, vui lòng kiểm tra lại lúc khác...
             </p>
           </div>
           <div>
             <p class="text-center text-yellow-500 text-2xl pt-16">
               <a class="text-blue-500" href="https://zalo.me/g/mkrjas759"
-                >👉 👉 Tham gia nhóm Zalo</a
+                >👉 👉 Nhóm Zalo</a
+              >
+              <a
+                class="text-blue-500"
+                href="https://www.facebook.com/groups/thambuudien"
+                >👉 👉 Nhóm Facebook</a
               >
             </p>
             <p class="text-center text-xl pt-5">

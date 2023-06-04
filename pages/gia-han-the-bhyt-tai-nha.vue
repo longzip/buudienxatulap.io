@@ -8,6 +8,8 @@
     <!-- <SanPham />
       <ThongBao />
       <GuiYeuCau /> -->
+    <ThamBuuDien />
+    <HoThiTham />
   </main>
 </template>
 <script>

@@ -160,6 +160,7 @@ export default {
         nu: 0.55,
       },
       tiLeHuong: 0.55,
+      heSoTruotGia: 1.285,
       tong: 0,
       laiSuatNganHang: 0.07,
       options: [
@@ -205,8 +206,8 @@ export default {
           haNoiHoTro,
           mucDong: this.mucThuNhap * 0.22 * soThang,
           luongDuKien: {
-            nam: this.mucThuNhap * 1.6965 * this.mucHuong.nam,
-            nu: this.mucThuNhap * 1.6965 * this.mucHuong.nu,
+            nam: this.mucThuNhap * this.heSoTruotGia * this.mucHuong.nam,
+            nu: this.mucThuNhap * this.heSoTruotGia * this.mucHuong.nu,
           },
           tien: (this.mucThuNhap * 0.22 - this.mucHoTro) * soThang - haNoiHoTro,
         }
@@ -216,17 +217,34 @@ export default {
       return [...Array(20).keys()].map((namThu) => ({
         namThu: namThu + 1,
         luong: Math.round(
-          this.mucThuNhap * 1.6965 * this.tiLeHuong * Math.pow(1.07, namThu)
+          this.mucThuNhap *
+            this.heSoTruotGia *
+            this.tiLeHuong *
+            Math.pow(1.07, namThu)
         ),
       }))
     },
+  },
+  created() {
+    if (this.$route.query.q) {
+      const q = this.$route.query.q
+      this.mucThuNhap = Number(q.match(/\d+/g).join(''))
+    }
+    if (this.$route.query.mucHuong) {
+      const tiLeHuong = this.$route.query.mucHuong
+      this.tiLeHuong = tiLeHuong / 100
+    }
   },
   methods: {
     tongNamThu(namThu) {
       return [...Array(namThu).keys()]
         .map((i) =>
           Math.round(
-            this.mucThuNhap * 1.6965 * this.tiLeHuong * Math.pow(1.07, i) * 12
+            this.mucThuNhap *
+              this.heSoTruotGia *
+              this.tiLeHuong *
+              Math.pow(1.07, i) *
+              12
           )
         )
         .reduce((partialSum, a) => partialSum + a, 0)

@@ -43,7 +43,7 @@
             v-if="loading"
             class="text-center text-yellow-500 text-2xl pt-16"
           >
-            Đang tìm kiếm định vị bưu gửi....
+            Đang tìm kiếm định vị bưu gửi.... Vui lòng chờ đợi.
           </div>
           <div v-if="itemCode && itemCode.TBL_INFO">
             <p class="text-gray-500 text-xl mt-10">
@@ -124,7 +124,7 @@
               >.
             </p>
           </div>
-          <div v-else>
+          <div v-if="loi">
             <p class="text-center text-yellow-500 text-2xl pt-16">
               Không tìm thấy định vị bưu gửi <strong>{{ searchText }}</strong
               >. Vui lòng kiểm tra lại lúc khác...
@@ -132,11 +132,13 @@
           </div>
           <div>
             <p class="text-center text-yellow-500 text-2xl pt-16">
-              Để được hỗ trợ thêm hãy tham gia nhóm Zalo Hỗ Trợ khách hàng bưu
-              điện xã Tự Lập tại
-              <a class="text-blue-500" href="https://zalo.me/g/sdnmvi859"
-                >tại đây</a
+              <a class="text-blue-500" href="https://zalo.me/g/mkrjas759"
+                >👉 👉 Tham gia nhóm Zalo</a
               >
+            </p>
+            <p class="text-center text-xl pt-5">
+              Nhận thông tin về lịch làm việc và các sản phẩm dịch vụ của bưu
+              điện đang triển khai tại điểm Bưu điện văn hóa xã Tự Lập.
             </p>
           </div>
         </div>
@@ -151,6 +153,7 @@ export default {
       searchText: '',
       itemCode: {},
       loading: false,
+      loi: '',
     }
   },
   created() {
@@ -177,10 +180,15 @@ export default {
 
     async timKiem(searchText) {
       this.loading = true
-      this.itemCode = {}
+      this.itemCode = null
+      this.loi = ''
       // this.TBL_INFO = {};
 
-      this.itemCode = await this.fetchAPIByName(searchText)
+      try {
+        this.itemCode = await this.fetchAPIByName(searchText)
+      } catch (error) {
+        this.loi = 'Có lỗi.'
+      }
       // const TBL_INFO = kq;
       // this.TBL_INFO = TBL_INFO;
       // this.itemCode =kq;

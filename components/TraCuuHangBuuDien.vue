@@ -186,13 +186,14 @@ export default {
 
       try {
         this.itemCode = await this.fetchAPIByName(searchText)
+        this.loading = false
       } catch (error) {
         this.loi = 'Có lỗi.'
+        this.loading = false
       }
       // const TBL_INFO = kq;
       // this.TBL_INFO = TBL_INFO;
       // this.itemCode =kq;
-      this.loading = false
     },
   },
 }

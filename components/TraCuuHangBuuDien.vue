@@ -2,48 +2,13 @@
   <section class="relative py-20">
     <div class="container mx-auto px-1">
       <div class="items-center flex flex-wrap">
-        <div class="w-full md:w-6/12 ml-auto mr-auto px-1">
-          <ThamBuuDien />
-          <!-- <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="grid-first-name"
-          >
-            Mã bưu gửi
-          </label>
-          <input
-            id="grid-first-name"
-            v-model="searchText"
-            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            type="text"
-            placeholder="Ví dụ: EB156283795VN"
-            @keydown.enter="timKiem(searchText)"
-          />
-          <p class="text-red-500 text-xs italic mb-5">
-            Khi gửi hàng tại Bưu điện xã Tự Lập chúng tôi sẽ in cho bạn phiếu có
-            mã vận đơn. Bạn hãy nhập vào đây và bấm tra cứu.
-          </p>
-          <div class="flex items-center justify-between">
-            <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-              @click="timKiem(searchText)"
-            >
-              Tra cứu
-            </button>
-            <a
-              class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="tel:0978333963"
-            >
-              Bạn cần trợ giúp?
-            </a>
-          </div> -->
-        </div>
         <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
           <div
             v-if="loading"
             class="text-center text-yellow-500 text-2xl pt-16"
           >
-            Đang tìm kiếm định vị bưu gửi.... Vui lòng chờ đợi.
+            Đang tìm kiếm định vị bưu gửi {{ searchText }}. Vui lòng chờ trong
+            giây lát...
           </div>
           <div v-if="itemCode && itemCode.Code">
             <p
@@ -140,7 +105,7 @@
               >.
             </p>
           </div>
-          <div v-if="loi || itemCode.Message !== 'Lấy dữ liệu thành công'">
+          <div v-if="loi || itemCode.Message === 'An error has occurred.'">
             <p class="text-center text-yellow-500 text-2xl pt-16">
               Không tìm thấy định vị bưu gửi <strong>{{ searchText }}</strong
               >. Hệ thống đang bảo trì, vui lòng kiểm tra lại lúc khác...
@@ -162,6 +127,9 @@
               điện đang triển khai tại điểm Bưu điện văn hóa xã Tự Lập.
             </p>
           </div>
+        </div>
+        <div class="w-full md:w-6/12 ml-auto mr-auto px-1">
+          <ThamBuuDien />
         </div>
       </div>
     </div>

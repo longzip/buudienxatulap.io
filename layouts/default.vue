@@ -20,20 +20,19 @@
       <span class="sr-only">Info</span>
       <div>
         <span class="font-medium"
-          >🎁Hỗ trợ từ 66k/tháng mức đóng BHXH tự nguyện hưởng lương hưu liên hệ
-          ngay</span
+          >💰Kể từ ngày 1 tháng 7 năm 2023, thay đổi mức đóng bảo hiểm y tế hộ gia đình.</span
         >
         (
         <a
           target="_blank"
           class="text-blue-600"
-          href="https://fb.me/ThamBuuDien/"
-          >Hồ Thị Thắm</a
+          href="https://blog.hotham.vn/muc-dong-bao-hiem-y-te-ho-gia-dinh-se-tang-tu-01-07-2023/"
+          >Xem ngay</a
         >
-        ). Tra cứu thẻ BHYT hết hạn truy cập
+        ). Kết nối với chị
         <a class="text-blue-600" href="https://www.facebook.com/ThamBuuDien/"
-          >tại đây</a
-        >
+          > Hồ Thị Thắm </a
+        > (thay anh Lập nghỉ)
         .
       </div>
     </div>

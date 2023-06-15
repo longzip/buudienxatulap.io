@@ -100,7 +100,7 @@
               &copy;2022 bởi
               <a
                 class="text-blue-500 hover:text-blue-800"
-                href="https://lovanlong.ga"
+                href="https://lamwebsite.hotham.vn/"
                 >Lỗ Văn Long</a
               >.
             </p>

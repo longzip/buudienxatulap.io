@@ -106,7 +106,7 @@
             </ul>
             <p class="text-center text-gray-500 text-xs mt-10">
               &copy;2022 bởi
-              <a class="text-blue-600" href="https://lovanlong.ga"
+              <a class="text-blue-600" href="https://lamwebsite.hotham.vn/"
                 >Lỗ Văn Long</a
               >.
             </p>

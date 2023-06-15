@@ -163,7 +163,7 @@
             hiện đại cùng
             <a
               target="_blank"
-              href="https://lovanlong.ga/"
+              href="https://lamwebsite.hotham.vn/"
               class="text-yellow-700 hover:text-yellow-900"
               >Lỗ Văn Long</a
             >.

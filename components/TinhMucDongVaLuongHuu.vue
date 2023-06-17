@@ -160,7 +160,7 @@ export default {
         nu: 0.55,
       },
       tiLeHuong: 0.55,
-      heSoTruotGia: 1.285,
+      heSoTruotGia: 1.6965,
       tong: 0,
       laiSuatNganHang: 0.07,
       options: [

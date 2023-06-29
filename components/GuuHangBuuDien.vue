@@ -49,19 +49,20 @@
           >
             Địa chỉ (thôn xóm, xã/phường, quận/huyện, tỉnh/tp):
           </label>
+          <p class="text-xs italic mb-5">Địa chỉ dài thì nhập cả 2 dòng.</p>
           <input
             id="grid-dia-chi-nguoi-nhan"
             v-model="donHang.diaChiNguoiNhan"
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text"
-            placeholder="Ví dụ: Bưu điện xã Tự Lâp"
+            placeholder="Dòng 1"
           />
           <input
             id="grid-dia-chi-nguoi-nhan-2"
             v-model="donHang.diaChiNguoiNhan2"
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text"
-            placeholder="Ví dụ: phú mỹ, tự lập, mê linh, hà nội"
+            placeholder="Dòng 2"
           />
           <hr class="mb-10" />
           <label

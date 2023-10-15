@@ -36,6 +36,31 @@
             <p class="text-gray-500 text-xl">
               Khối lượng: {{ itemCode.TBL_INFO.KHOI_LUONG }}g
             </p>
+            <p class="text-red-500 text-xl mt-5">
+              <span>Ưu đãi đặc biệt: </span>
+              <a
+                class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                href="https://bhyt.hotham.vn/mua-bao-hiem-xe-may"
+                target="_blank"
+              >
+                Mua bảo hiểm ô tô, xe máy hôm nay và nhận ngay chiết khấu cao!
+                <svg
+                  class="w-4 h-4 ml-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
+            </p>
             <h3 class="text-blue-500 text-xl mt-16">
               Mã vận đơn:{{ itemCode.TBL_INFO.MAE1 }} -
               {{ itemCode.TBL_INFO.BC_GUI }}
@@ -109,22 +134,6 @@
             <p class="text-center text-yellow-500 text-2xl pt-16">
               Không tìm thấy định vị bưu gửi <strong>{{ searchText }}</strong
               >. Hệ thống đang bảo trì, vui lòng kiểm tra lại lúc khác...
-            </p>
-          </div>
-          <div>
-            <p class="text-center text-yellow-500 text-2xl pt-16">
-              <a class="text-blue-500" href="https://zalo.me/g/mkrjas759"
-                >👉 👉 Nhóm Zalo</a
-              >
-              <a
-                class="text-blue-500"
-                href="https://www.facebook.com/groups/thambuudien"
-                >👉 👉 Nhóm Facebook</a
-              >
-            </p>
-            <p class="text-center text-xl pt-5">
-              Nhận thông tin về lịch làm việc và các sản phẩm dịch vụ của bưu
-              điện đang triển khai tại điểm Bưu điện văn hóa xã Tự Lập.
             </p>
           </div>
         </div>

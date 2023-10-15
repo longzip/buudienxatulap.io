@@ -20,19 +20,24 @@
       <span class="sr-only">Info</span>
       <div>
         <span class="font-medium"
-          >💰Kể từ ngày 1 tháng 7 năm 2023, thay đổi mức đóng bảo hiểm y tế hộ gia đình.</span
+          >🎁🎉 NHẬN MIỄN PHÍ 01 NƯỚC RỬA CHÉN ĐẬM ĐẶC POLAR BEAR DẠNG TÚI 750G
+          0Đ KHI THAM GIA BHXH TN</span
         >
-        (
+
         <a
           target="_blank"
           class="text-blue-600"
-          href="https://blog.hotham.vn/muc-dong-bao-hiem-y-te-ho-gia-dinh-se-tang-tu-01-07-2023/"
-          >Xem ngay</a
+          href="https://bhyt.hotham.vn/tang-nuoc-rua-chen-dam-dac-polar-bear-dang-tui-750g"
         >
-        ). Kết nối với chị
-        <a class="text-blue-600" href="https://www.facebook.com/ThamBuuDien/"
-          > Hồ Thị Thắm </a
-        > (thay anh Lập nghỉ)
+          tại đây</a
+        >
+        . Kết nối với những người bạn của
+        <a
+          class="text-blue-600"
+          href="https://www.facebook.com/groups/hothitham"
+        >
+          Hồ Thị Thắm
+        </a>
         .
       </div>
     </div>

@@ -174,6 +174,13 @@
               href="https://lamwebsite.hotham.vn/"
               class="text-yellow-700 hover:text-yellow-900"
               >Lỗ Văn Long</a
+            >
+            |
+            <a
+              target="_blank"
+              href="https://www.amycos.shop/"
+              class="text-yellow-700 hover:text-yellow-900"
+              >Mỹ phẩm Amycos</a
             >.
           </div>
         </div>

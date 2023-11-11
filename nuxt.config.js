@@ -30,20 +30,33 @@ export default {
       {
         hid: 'msapplication',
         name: 'msapplication-TileColor',
-        content: '#ffffff',
+        content: '#da532c',
       },
       { name: 'msapplication-TileImage', content: '/ms-icon-144x144.png' },
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
       {
-        rel: 'shortcut icon',
-        href: '/favicon.ico'
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
       },
       {
-        rel: 'apple-touch-icon',
-        href: '/apple-touch-icon.png',
-      }
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/site.webmanifest',
+      },
     ],
 
     script: [

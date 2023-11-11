@@ -11,24 +11,24 @@
 <script>
 export default {
   head: {
-    title: 'Bưu điện văn hóa xã Tự Lập - Hồ Thị Thắm',
+    title: 'Hồ Thị Thắm - Bưu điện xã Tự Lập',
     meta: [
       {
         hid: 'description',
         name: 'description',
         content:
-          'Mã bưu điện: 142010 · Bưu cục: Bưu điện văn hóa xã Tự Lập · Địa chỉ: Thôn Phú Mỹ, Xã Tự Lập, Huyện Mê Linh, Thành phố Hà Nội · Điện thoại: 0978333963',
+          'Hồ Thị Thắm - Địa chỉ: Bưu điện xã Tự Lập, Thôn Phú Mỹ, Xã Tự Lập, Huyện Mê Linh, Thành phố Hà Nội · Điện thoại: 0978333963',
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'Bưu điện văn hóa xã Tự Lập | Hồ Thị Thắm',
+        content: 'Hồ Thị Thắm - Bưu điện xã Tự Lập',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          'Bưu cục: Bưu điện văn hóa xã Tự Lập chuyên cung cấp dịch vụ gửi hàng thu tiền hộ COD. Đại lý thu BHXH, BHYT xã Tự Lập. Mua hàng tiêu dùng bình ổn thị trường.',
+          'Hồ Thị Thắm - Địa chỉ: Bưu điện xã Tự Lập, Thôn Phú Mỹ, Xã Tự Lập, Huyện Mê Linh, Thành phố Hà Nội · Điện thoại: 0978333963',
       },
       {
         hid: 'og:type',
@@ -38,8 +38,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content:
-          'https://www.hotham.vn/images/ho-thi-tham-o-buu-dien-xa-tu-lap.jpg',
+        content: 'https://www.hotham.vn/images/tham-buu-dien-xa-tu-lap.webp',
       },
       {
         hid: 'og:url',

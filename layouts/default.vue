@@ -20,23 +20,54 @@
       <span class="sr-only">Info</span>
       <div>
         <span class="font-medium"
-          >🎁🎉 NHẬN MIỄN PHÍ 01 NƯỚC RỬA CHÉN ĐẬM ĐẶC POLAR BEAR DẠNG TÚI 750G
-          0Đ KHI THAM GIA BHXH TN</span
+          >🎁 Hồ Thị Thắm tặng
+          <strong class="underline">01 bột canh i-ốt Hải Châu</strong> cho khách
+          hàng gia hạn thẻ bảo hiểm y tế tại điểm bưu điện xã Tự Lập!</span
         >
 
         <a
           target="_blank"
-          class="text-blue-600"
-          href="https://bhyt.hotham.vn/tang-nuoc-rua-chen-dam-dac-polar-bear-dang-tui-750g"
+          class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          href="https://www.hotham.vn/giahanbhyt/"
         >
-          tại đây</a
+          <svg
+            class="w-4 h-4 ms-2 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+          Nhận ngay</a
         >
-        . Kết nối với những người bạn của
+        . Tham gia BHXH tự nguyện cùng
         <a
-          class="text-blue-600"
+          class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline"
           href="https://www.facebook.com/groups/hothitham"
         >
-          Hồ Thị Thắm
+          <svg
+            class="w-4 h-4 ms-2 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+          chị Hồ Thị Thắm
         </a>
         .
       </div>

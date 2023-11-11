@@ -9,9 +9,9 @@
         class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
       >
         <a
-          class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+          class="inline-flex items-center text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
           href="/"
-          >Hồ Thị Thắm - Bưu điện xã Tự Lập</a
+          ><img class="shadow-xl rounded-full mr-5" src="/tham-buu-dien.webp" alt="Hồ Thị Thắm"> Hồ Thị Thắm</a
         ><button
           class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
           type="button"

@@ -24,12 +24,12 @@
                 </svg>
               </div>
               <h6 class="text-xl font-semibold">
-                Điểm thu Bảo Hiểm Xã Hội, Bảo Hiểm Y Tế
+                Thu tiền bảo hiểm y tế (BHYT) và BHXH tự nguyện
               </h6>
               <p class="mt-2 mb-4 text-gray-600">
-                Tổ chức dịch vụ thu Bưu điện: <strong>Hồ Thị Thắm</strong> -
-                0978333963 trực tiếp tại BĐ xã Tự Lập (cạnh trạm y tế xã) thay
-                anh Lập nghỉ.
+                Người dân cần gia hạn thẻ BHYT, đóng tiếp BHXH tự nguyện chỉ cần
+                đến điểm <strong>Bưu điện xã Tự Lập</strong> gặp chị Hồ Thị Thắm
+                (<em>thay anh Lập nghỉ</em>) để nộp tiền.
               </p>
             </div>
           </div>
@@ -57,11 +57,10 @@
                   />
                 </svg>
               </div>
-              <h6 class="text-xl font-semibold">Điểm thu tiền điện</h6>
+              <h6 class="text-xl font-semibold">Thu hộ tiền điện</h6>
               <p class="mt-2 mb-4 text-gray-600">
-                Lịch thu hộ tiền điện ở BĐ xã Tự Lập vào các buổi sáng Từ ngày
-                13 hằng tháng (Lưu ý: Để nộp tiền tất toán trong ngày chúng tôi
-                <em>chỉ thu hộ tiền điện trong buổi sáng</em> ).
+                Chị Hồ Thị Thắm thu hộ tiền điện tại điểm Bưu điện xã Tự Lập
+                theo lịch buổi sáng ngày 13,14 và 15 hàng tháng.
               </p>
             </div>
           </div>
@@ -93,7 +92,8 @@
                 Điểm bán Bảo Hiểm Ô Tô - Xe Máy
               </h6>
               <p class="mt-2 mb-4 text-gray-600">
-                Tiết kiệm lên đến 50% khi mua Bảo Hiểm Ô Tô - Xe Máy PTI.
+                Liên hệ chị Hồ Thị Thắm - 0978333963 để được hưởng mức chiết
+                khấu cao.
               </p>
             </div>
           </div>
@@ -120,25 +120,25 @@
             </svg>
           </div>
           <h3 class="text-3xl mb-2 font-semibold leading-normal">
-            Điểm Bưu điện Văn hóa xã đã dịch vụ
+            Điểm Bưu điện Văn hóa xã Tự Lập đã dịch vụ
           </h3>
           <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-            Chi trả lương hưu và trợ cấp bảo hiểm xã hội (BHXH), thu bảo hiểm y
-            tế (BHYT) cho người dân xã Tự Lập.
+            Địa chỉ: Thôn Phú Mỹ, Xã Tự Lập, Mê Linh, Hà Nội. Số điện thoại:
+            0978333963
           </p>
           <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
             Nhận gửi thư từ, hàng hóa, bán các hàng tiêu dùng thiết yếu phân
             phối bởi bưu điện Hà Nội.
           </p>
           <a
-            href="https://www.facebook.com/ThamBuuDien"
+            href="https://www.facebook.com/buudienxatulap"
             class="font-bold text-gray-800 mt-8"
-            >Tìm hiểu thêm</a
+            >Truy cập ngay Fanpage: Bưu điện xã Tự Lập</a
           >
         </div>
         <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
           <div
-            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blue-600"
+            class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blue-600"
           >
             <nuxt-img
               format="webp"
@@ -163,18 +163,20 @@
                 ></polygon>
               </svg>
               <h4 class="text-xl font-bold text-white">
-                Cô nhân viên Bưu điện Văn hóa xã Tự Lập giỏi bán hàng
+                Nữ nhân viên Bưu điện - Văn hóa xã “đa kênh”
               </h4>
               <p class="text-md font-light mt-2 text-white">
-                Bén duyên với nghề từ năm 2021, những ngày đầu còn đầy khó khăn,
-                bỡ ngỡ trong việc giới thiệu các sản phẩm của Bưu điện đến thị
-                trường xã, làm sao để khách hàng tin yêu, để Bưu điện – Văn hóa
-                xã (BĐ-VHX) là điểm đến quen thuộc của người dân trên địa bàn?
-                Với đam mê bán hàng, chị Hồ Thị Thắm đã luôn trăn trở, sáng tạo,
-                không quản ngại khó khăn để tìm ra câu trả lời, trở thành 1
-                trong những tấm gương bán hàng tiêu biểu của Bưu điện huyện Mê
-                Linh.
+                Dù chỉ mới công tác trong ngành Bưu điện hơn 2 năm nhưng Hồ Thị
+                Thắm - nhân viên Bưu điện - Văn hóa xã Tự Lập, Bưu điện huyện Mê
+                Linh, Bưu điện TP. Hà Nội đã sở hữu cho mình một hệ thống bán
+                hàng “đa kênh” được rất nhiều đồng nghiệp khen ngợi và học hỏi
+                kinh nghiệm.
               </p>
+              <a
+                href="https://guicaniemtin.vn/buu-dien-toi-yeu/tin-tuc-su-kien/nu-nhan-vien-buu-dien-van-hoa-xa-da-kenh_1823.html"
+                class="font-bold text-gray-800 mt-8"
+                >Đọc thêm ..</a
+              >
             </blockquote>
           </div>
         </div>

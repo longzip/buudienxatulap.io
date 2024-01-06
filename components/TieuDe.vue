@@ -19,13 +19,13 @@
         <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
           <div class="pr-12">
             <h1 class="text-white font-semibold text-5xl">
-              {{ title ? title : 'Bưu điện văn hóa xã Tự Lập' }}.
+              {{ title ? title : 'Hồ Thị Thắm' }}.
             </h1>
             <p class="mt-4 text-lg text-gray-300">
               {{
                 desc
                   ? desc
-                  : 'Luôn mở cửa tất cả các ngày: Buổi sáng từ 8h00-11h00; Buổi chiều từ 14h00-17h00. Ngoài ra bạn có thể đặt lịch hẹn để chúng tôi ra mở cửa.'
+                  : 'Chi trả lương hưu và trợ cấp BHXH, gia hạn thẻ BHYT hộ gia đình, BHXH tự nguyện tại điểm bưu điện xã Tự Lập.'
               }}.
             </p>
           </div>

@@ -2,7 +2,8 @@
   <main>
     <TieuDe />
     <BuuDienXaTuLap />
-    <AnSinhBuuDien />
+    <!-- <AnSinhBuuDien /> -->
+    <ThamBuuDien />
     <SanPham />
     <ThongBao />
     <GuiYeuCau />

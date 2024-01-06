@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10">
+  <div class="m-5">
     <div>
       <p class="text-gray-500 text-xl mt-5">
         Mình là Hồ Thị Thắm, nhân viên bưu điện văn hóa xã Tự Lập, huyện Mê

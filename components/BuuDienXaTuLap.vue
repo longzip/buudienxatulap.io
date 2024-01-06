@@ -120,7 +120,7 @@
             </svg>
           </div>
           <h3 class="text-3xl mb-2 font-semibold leading-normal">
-            Điểm Bưu điện Văn hóa xã Tự Lập đã dịch vụ
+            Điểm Bưu điện Văn hóa xã Tự Lập
           </h3>
           <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
             Địa chỉ: Thôn Phú Mỹ, Xã Tự Lập, Mê Linh, Hà Nội. Số điện thoại:
@@ -130,11 +130,14 @@
             Nhận gửi thư từ, hàng hóa, bán các hàng tiêu dùng thiết yếu phân
             phối bởi bưu điện Hà Nội.
           </p>
+          <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
+            Thông tin về các dịch vụ và lịch làm việc tại điểm.
+          </p>
           <a
             href="https://www.facebook.com/buudienxatulap"
-            class="font-bold text-gray-800 mt-8"
-            >Truy cập ngay Fanpage: Bưu điện xã Tự Lập</a
-          >
+            class="font-bold text-blue-600 mt-8"
+            >Truy cập ngay Fanpage: <span>Bưu điện xã Tự Lập</span>
+          </a>
         </div>
         <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
           <div
@@ -174,7 +177,7 @@
               </p>
               <a
                 href="https://guicaniemtin.vn/buu-dien-toi-yeu/tin-tuc-su-kien/nu-nhan-vien-buu-dien-van-hoa-xa-da-kenh_1823.html"
-                class="font-bold text-gray-800 mt-8"
+                class="font-bold text-white mt-8"
                 >Đọc thêm ..</a
               >
             </blockquote>

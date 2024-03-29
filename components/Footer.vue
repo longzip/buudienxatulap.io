@@ -121,7 +121,7 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/gui-do-qua-buu-dien/"
+                    href="https://www.hotham.vn/gui-do-qua-buu-dien/"
                     target="_blank"
                     >Gửi đồ qua bưu điện</a
                   >

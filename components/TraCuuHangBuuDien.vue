@@ -137,9 +137,7 @@
             </p>
           </div>
         </div>
-        <div class="w-full md:w-6/12 ml-auto mr-auto px-1">
-          <ThamBuuDien />
-        </div>
+        <div class="w-full md:w-6/12 ml-auto mr-auto px-1"></div>
       </div>
     </div>
   </section>

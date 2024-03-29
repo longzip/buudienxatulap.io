@@ -3,7 +3,6 @@
     <div class="container mx-auto px-4">
       <div class="items-center flex flex-wrap">
         <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
-          <ThamBuuDien />
           <!-- <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-first-name"

@@ -30,7 +30,6 @@
                 class="max-w-full rounded-lg shadow-lg"
                 src="/images/bao-hiem-buu-dien-pti.jpg"
               /> -->
-          <ThamBuuDien />
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12">

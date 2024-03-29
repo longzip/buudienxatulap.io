@@ -141,13 +141,6 @@
                     >Tra cứu mức đóng BHYT</a
                   >
                 </li>
-                <li>
-                  <a
-                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="http://hanoi.vnpost.vn/"
-                    >Bưu điện Hà Nội</a
-                  >
-                </li>
 
                 <li>
                   <a

@@ -20,6 +20,17 @@
         Học Tự Nhiên - ĐHQG Hà Nội
       </div>
     </div>
+    <div class="m-5">
+      <div class="aspect-w-16 aspect-h-9 mt-10">
+        <iframe
+          src="https://www.youtube.com/embed/x-btCbzxizo?start=12"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
     <div class="mt-10 py-10 border-t border-gray-300 text-center">
       <div class="flex flex-wrap justify-center">
         <div class="w-full lg:w-9/12 px-4">
